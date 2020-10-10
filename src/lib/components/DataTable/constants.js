@@ -1,0 +1,3 @@
+export const UPDATE_COLUMN_ORDER = 'DataTable/UPDATE_COLUMN_ORDER';
+export const UPDATE_SELECTED_ROWS = 'DataTable/UPDATE_SELECTED_ROWS';
+export const UPDATE_ROWS_COUNT = 'DataTable/UPDATE_ROWS_COUNT';

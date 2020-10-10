@@ -1,0 +1,56 @@
+{
+  "name": "@tatareact/core",
+  "version": "0.0.3",
+  "description": "Core components for TaTa react applications",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --open",
+    "build": "webpack --mode production",
+    "docz:dev": "docz dev",
+    "docz:build": "docz build"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [],
+  "author": "",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.0.0",
+    "@material-ui/core": "^4.9.13",
+    "@tulipjs/eslint-config": "^1.1.1",
+    "babel-loader": "^8.0.1",
+    "copy-webpack-plugin": "^6.2.0",
+    "css-loader": "^1.0.0",
+    "docz": "^1.2.0",
+    "docz-theme-default": "^1.2.0",
+    "eslint-config-prettier": "4.1.0",
+    "eslint-plugin-prettier": "3.0.1",
+    "eslint-plugin-react-hooks": "1.6.0",
+    "node-sass": "^4.9.3",
+    "prop-types": "15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.2.0",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "peerDependencies": {
+    "prop-types": "15.7.2",
+    "@material-ui/core": "^4.9.13",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "dependencies": {}
+}
