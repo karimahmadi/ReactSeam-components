@@ -4,7 +4,7 @@ import { Typography } from '@material-ui/core';
 
 function Label({
   children,
-  variant = 'body1',
+  variant = 'body2',
   color = 'initial',
   display = 'initial',
   align,

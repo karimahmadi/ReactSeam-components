@@ -1,14 +1,14 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Header } from './Header';
+import { CardView } from './cardView';
+import { HeaderText } from './HeaderText';
+
 /**
  *
  * Section
  *
  */
-
-import React from 'react';
-import PropTypes from 'prop-types';
-import { HeaderText } from './HeaderText';
-import { Header } from './Header';
-import { CardView } from './cardView';
 
 function Section({ children, title, width = '100%', grid }) {
   return (
