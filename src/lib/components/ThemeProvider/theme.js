@@ -18,9 +18,10 @@ const theme = {
     fontSize: 14, // default 14px
     htmlFontSize: 16, // default html font size 16px
     button: {
-      fontFamily: 'B Yekan',
+      fontFamily: 'B Titr',
       padding: '4px 12px',
-      borderRadius: 0,
+			border : '1px solid #a2a2a2',
+      borderRadius: 1,
     },
   },
   shape: {
