@@ -12,7 +12,7 @@ import { HeaderText } from './HeaderText';
 
 function Section({ children, title, width = '100%', grid }) {
   return (
-    <CardView width={width} grid={grid}>
+    <CardView width={width} grid={grid ? 'true' : 'false'}>
       {title && (
         <Header>
           <HeaderText>{`« ${title} »`}</HeaderText>
