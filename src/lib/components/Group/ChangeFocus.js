@@ -5,7 +5,7 @@
  */
 
 import React, { useEffect, Fragment, useState, useContext } from 'react';
-import { ComponentContext } from '../index';
+import { ComponentContext } from './index';
 
 // import styled from 'styled-components';
 
