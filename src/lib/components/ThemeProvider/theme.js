@@ -20,7 +20,8 @@ const theme = {
     button: {
       fontFamily: 'B Titr',
       padding: '4px 12px',
-			border : '1px solid #a2a2a2',
+      border: '1px solid #ccc',
+      hoverBorder: '1px solid #a2a2a2',
       borderRadius: 1,
     },
   },

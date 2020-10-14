@@ -1,11 +1,11 @@
 import React, { useEffect, useContext } from 'react';
-import TableCell from '@material-ui/core/TableCell/TableCell';
-import TableRow from '@material-ui/core/TableRow/TableRow';
 import MuiTableBody from '@material-ui/core/TableBody/TableBody';
-import Checkbox from '@material-ui/core/Checkbox/Checkbox';
 import { v4 as uuid } from 'uuid';
 import { DataTableContext } from './DataTableContext';
 import { UPDATE_SELECTED_ROWS, UPDATE_ROWS_COUNT } from './constants';
+import { DataTableCheckbox } from './DataTableCheckbox';
+import { DataTableRow } from './DataTableRow';
+import { DataTableCell } from './DataTableCell';
 
 export const TableBody = () => {
   const [state, dispatch] = useContext(DataTableContext);
@@ -89,7 +89,7 @@ export const TableBody = () => {
           const isItemSelected = isSelected(row.name);
 
           return (
-            <TableRow
+            <DataTableRow
               hover
               onClick={event => handleClick(event, row.name)}
               role="checkbox"
@@ -101,24 +101,24 @@ export const TableBody = () => {
               {state.colsDef.map(headCell => {
                 if (headCell.checkbox === true) {
                   return (
-                    <TableCell padding="checkbox" key={uuid()}>
-                      <Checkbox checked={isItemSelected} />
-                    </TableCell>
+                    <DataTableCell key={uuid()}>
+                      <DataTableCheckbox checked={isItemSelected} />
+                    </DataTableCell>
                   );
                 }
                 return (
-                  <TableCell align={headCell.align} key={headCell.id}>
+                  <DataTableCell align={headCell.align} key={headCell.id}>
                     {row[headCell.id]}
-                  </TableCell>
+                  </DataTableCell>
                 );
               })}
-            </TableRow>
+            </DataTableRow>
           );
         })}
       {emptyRows > 0 && (
-        <TableRow>
-          <TableCell colSpan={6} />
-        </TableRow>
+        <DataTableRow>
+          <DataTableCell colSpan={6} />
+        </DataTableRow>
       )}
     </MuiTableBody>
   );

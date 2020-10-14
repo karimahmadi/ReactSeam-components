@@ -4,87 +4,54 @@
  *
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Table from '@material-ui/core/Table';
 import TableContainer from '@material-ui/core/TableContainer';
 import { TableHead } from './TableHead';
 import { TableBody } from './TableBody';
 import { DataTableProvider } from './DataTableContext';
+import { DataTablePagination } from './DataTablePagination';
 
-const useData = () => [
-  { name: 'Frozen yoghurt', calories: 159, fat: 6, carbs: 24, protein: 4 },
-  {
-    name: 'Ice cream sandwich',
-    calories: 237,
-    fat: 9,
-    carbs: 37,
-    protein: 4.3,
-  },
-  { name: 'Eclair', calories: 262, fat: 16, carbs: 24, protein: 6 },
-  { name: 'Cupcake', calories: 305, fat: 3.7, carbs: 67, protein: 4.3 },
-  { name: 'Gingerbread', calories: 356, fat: 16, carbs: 49, protein: 3.9 },
-];
+function DataTable({ rows, colsDef, totalCount, pageSize }) {
+  const [page, setPage] = React.useState(1);
+  const [count, setCount] = React.useState(
+    totalCount / pageSize + (totalCount % pageSize) > 0 ? 1 : 0,
+  );
 
-function DataTable() {
-  const rows = useData();
-  const colsDef = [
-    {
-      checkbox: true,
-    },
-    {
-      id: 'name',
-      headerAlign: 'right',
-      align: 'left',
-      numeric: true,
-      disablePadding: false,
-      label: 'دسر (100گرم)',
-    },
-    {
-      id: 'calories',
-      headerAlign: 'right',
-      align: 'right',
-      numeric: true,
-      disablePadding: false,
-      label: 'کالری',
-    },
-    {
-      id: 'fat',
-      headerAlign: 'right',
-      align: 'right',
-      numeric: true,
-      disablePadding: false,
-      label: 'چربی (گرم)',
-    },
-    {
-      id: 'carbs',
-      headerAlign: 'right',
-      align: 'right',
-      numeric: true,
-      disablePadding: false,
-      label: 'کربوهیدرات (گرم)',
-    },
-    {
-      id: 'protein',
-      headerAlign: 'right',
-      align: 'right',
-      numeric: true,
-      disablePadding: false,
-      label: 'پروتئین (گرم)',
-    },
-  ];
+  useEffect(() => {
+    setCount(totalCount / pageSize + (totalCount % pageSize > 0 ? 1 : 0));
+  }, [totalCount, pageSize]);
+
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
 
   return (
     <DataTableProvider rows={rows} colsDef={colsDef}>
       <TableContainer>
-        <Table size="small" aria-label="a dense table">
+        <Table>
           <TableHead />
           <TableBody />
         </Table>
       </TableContainer>
+      <DataTablePagination
+        size="small"
+        count={count}
+        showFirstButton
+        showLastButton
+        page={page}
+        onChange={handleChange}
+      />
     </DataTableProvider>
   );
 }
 
-DataTable.propTypes = {};
+DataTable.propTypes = {
+  rows: PropTypes.array,
+  colsDef: PropTypes.array,
+  totalCount: PropTypes.number,
+  pageSize: PropTypes.number,
+};
 
 export default DataTable;

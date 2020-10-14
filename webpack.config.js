@@ -97,12 +97,17 @@ module.exports = (env, argv) => {
     config.entry = {
       'Modal/index': './src/lib/components/Modal/index.js',
       'Section/index': './src/lib/components/Section/index.js',
+      'Input/index': './src/lib/components/Input/index.js',
+      'InputLabel/index': './src/lib/components/InputLabel/index.js',
+      'Button/index': './src/lib/components/Button/index.js',
+      'DataTable/index': './src/lib/components/DataTable/index.js',
     };
     config.externals = [
       'react',
       'react-dom',
       /^@material-ui\/.+$/,
       /^moment.*$/,
+      'uuid',
     ];
     return config;
   }

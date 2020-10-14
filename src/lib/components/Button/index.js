@@ -11,7 +11,11 @@ export const Button = styled(withTheme(MuiButton))(props => ({
   fontSize: (props.theme.typography.fontSize * 80) / 100,
   padding: '4px 12px',
   margin: props.theme.spacing('auto', 0.25),
-	whiteSpace:'noWrap',
+  whiteSpace: 'noWrap',
+  '&:hover': {
+    background: props.theme.palette.grey[200],
+    border: props.theme.typography.button.hoverBorder,
+  },
 }));
 
 const ButtontWithChangeFocus = props => withChangeFocus(Button)(props);

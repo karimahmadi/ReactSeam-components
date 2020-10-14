@@ -1,11 +1,12 @@
-import TableRow from '@material-ui/core/TableRow/TableRow';
-import TableCell from '@material-ui/core/TableCell/TableCell';
 import MuiTableHead from '@material-ui/core/TableHead';
 import TableSortLabel from '@material-ui/core/TableSortLabel/TableSortLabel';
-import Checkbox from '@material-ui/core/Checkbox/Checkbox';
 import React, { useContext } from 'react';
+import { v4 as uuid } from 'uuid';
 import { DataTableContext } from './DataTableContext';
 import { UPDATE_COLUMN_ORDER, UPDATE_SELECTED_ROWS } from './constants';
+import { DataTableCheckbox } from './DataTableCheckbox';
+import { DataTableHeadCell } from './DataTableHeadCell';
+import { DataTableHeadRow } from './DataTableHeadRow';
 
 export const TableHead = () => {
   const [state, dispatch] = useContext(DataTableContext);
@@ -32,12 +33,12 @@ export const TableHead = () => {
 
   return (
     <MuiTableHead>
-      <TableRow>
+      <DataTableHeadRow>
         {state.colsDef.map(headCell => {
           if (headCell.checkbox === true) {
             return (
-              <TableCell padding="checkbox">
-                <Checkbox
+              <DataTableHeadCell key={uuid()}>
+                <DataTableCheckbox
                   indeterminate={
                     numSelected > 0 && numSelected < state.rowCount
                   }
@@ -45,11 +46,11 @@ export const TableHead = () => {
                   onChange={handleSelectAllClick}
                   inputProps={{ 'aria-label': 'select all desserts' }}
                 />
-              </TableCell>
+              </DataTableHeadCell>
             );
           }
           return (
-            <TableCell
+            <DataTableHeadCell
               key={headCell.id}
               style={{ textAlign: headCell.headerAlign }}
               padding={headCell.disablePadding ? 'none' : 'default'}
@@ -61,10 +62,10 @@ export const TableHead = () => {
               >
                 {headCell.label}
               </TableSortLabel>
-            </TableCell>
+            </DataTableHeadCell>
           );
         })}
-      </TableRow>
+      </DataTableHeadRow>
     </MuiTableHead>
   );
 };
