@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { ComponentContext } from '../index';
+import { ComponentContext } from './index';
 const withChangeFocus = Component => props => {
   // eslint-disable-next-line no-unused-vars
   const [state, dispatch, ALL_CONSTANT] = useContext(ComponentContext);
