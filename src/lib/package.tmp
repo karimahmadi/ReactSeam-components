@@ -1,6 +1,6 @@
 {
   "name": "@tatareact/core",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Core components for TaTa react applications",
   "license": "ISC",
   "main": "index.js",
@@ -20,6 +20,7 @@
   "peerDependencies": {
     "prop-types": "15.7.2",
     "@material-ui/core": "^4.9.13",
+    "@material-ui/lab": "^4.0.0-alpha.56",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "moment": "2.27.0",
