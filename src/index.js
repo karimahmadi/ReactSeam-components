@@ -2,15 +2,15 @@ import React, { Fragment } from 'react';
 import { render } from 'react-dom';
 import Grid from '@material-ui/core/Grid/Grid';
 import ButtonGroup from '@material-ui/core/ButtonGroup/ButtonGroup';
-import { ModalProvider, useModal } from './lib/components/Modal';
+import { withStyles } from '@material-ui/core';
+import { ModalProvider } from './lib/components/Modal';
 import { Section } from './lib/components/Section';
 import { ThemeProvider } from './lib/components/ThemeProvider';
-import { InputLabel as Label } from './lib/components/InputLable';
+import { InputLabel as Label } from './lib/components/InputLabel';
 import { Input } from './lib/components/Input';
 import { Date } from './lib/components/Date';
 import { Button } from './lib/components/Button';
-import DataTable from './lib/components/DataTable';
-import { withStyles } from '@material-ui/core';
+import { DataTable } from './lib/components/DataTable';
 
 const GridEx = withStyles(() => ({
   item: {
@@ -93,7 +93,7 @@ const TestSection = () => {
 
   return (
     <Fragment>
-      <Section title="تقویم تعطیلات سامانه چکاوک" >
+      <Section title="تقویم تعطیلات سامانه چکاوک">
         <GridEx container alignItems="center" spacing={0}>
           <GridEx item lg={1} md={1} sm={1} xs={1}>
             <Label>از تاریخ :</Label>
@@ -115,7 +115,7 @@ const TestSection = () => {
           </GridEx>
         </GridEx>
       </Section>
-      <Section grid >
+      <Section grid>
         <Grid container spacing={1}>
           <Grid item lg={12} md={12} sm={12} xs={12}>
             <ButtonGroup variant="text">

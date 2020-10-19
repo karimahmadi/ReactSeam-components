@@ -101,6 +101,8 @@ module.exports = (env, argv) => {
       'InputLabel/index': './src/lib/components/InputLabel/index.js',
       'Button/index': './src/lib/components/Button/index.js',
       'DataTable/index': './src/lib/components/DataTable/index.js',
+      'Date/index': './src/lib/components/Date/index.js',
+      'ThemeProvider/index': './src/lib/components/ThemeProvider/index.js',
     };
     config.externals = [
       'react',
@@ -108,6 +110,7 @@ module.exports = (env, argv) => {
       /^@material-ui\/.+$/,
       /^moment.*$/,
       'uuid',
+      'styled-components',
     ];
     return config;
   }
