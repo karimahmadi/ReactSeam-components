@@ -85,6 +85,14 @@ const config = {
         { from: 'src/lib/package.tmp', to: 'package.json' },
         { from: 'src/lib/README.md', to: 'README.md' },
         { from: 'src/lib/components/Modal/README.md', to: 'Modal/README.md' },
+        {
+          from: 'src/lib/components/CodeCombo/README.md',
+          to: 'CodeCombo/README.md',
+        },
+        {
+          from: 'src/lib/components/CodeTextLookup/README.md',
+          to: 'CodeTextLookup/README.md',
+        },
       ],
     }),
   ],
@@ -103,14 +111,27 @@ module.exports = (env, argv) => {
       'DataTable/index': './src/lib/components/DataTable/index.js',
       'Date/index': './src/lib/components/Date/index.js',
       'ThemeProvider/index': './src/lib/components/ThemeProvider/index.js',
+      'ChqMenu/index': './src/lib/components/ChqMenu/index.js',
+      'AmountInput/index': './src/lib/components/AmountInput/index.js',
+      'CheckboxGroup/index': './src/lib/components/CheckboxGroup/index.js',
+      'CodeCombo/index': './src/lib/components/CodeCombo/index.js',
+      'CodeTextLookup/index': './src/lib/components/CodeTextLookup/index.js',
+      'DataGrid/index': './src/lib/components/DataGrid/index.js',
+      'DateTimePicker/index': './src/lib/components/DateTimePicker/index.js',
+      'FileUpload/index': './src/lib/components/FileUpload/index.js',
+      'NumberInput/index': './src/lib/components/NumberInput/index.js',
     };
     config.externals = [
       'react',
       'react-dom',
+      'react-router-dom',
+      'react-number-format',
       /^@material-ui\/.+$/,
       /^moment.*$/,
       'uuid',
       'styled-components',
+      'numeral',
+      'rc-easyui',
     ];
     return config;
   }

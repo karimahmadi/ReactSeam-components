@@ -99,7 +99,7 @@ const TestSection = () => {
             <Label>از تاریخ :</Label>
           </GridEx>
           <GridEx item lg={2} md={2} sm={2} xs={2}>
-            <Date />
+            <Date/>
           </GridEx>
           <GridEx item lg={1} md={1} sm={1} xs={1}>
             <Label>تا تاریخ :</Label>

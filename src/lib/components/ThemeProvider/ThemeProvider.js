@@ -12,7 +12,7 @@ const ThemeProvider = ({ theme, children }) => {
   let newTheme = createMuiTheme({ ...defaultTheme, ...theme });
   newTheme = responsiveFontSizes(newTheme);
   document.dir = newTheme.direction;
-  document.bgColor = newTheme.palette.background.bgColor;
+  document.bgColor = newTheme.palette.grey[400];
   return (
     <MuiThemeProvider theme={newTheme}>
       {children}

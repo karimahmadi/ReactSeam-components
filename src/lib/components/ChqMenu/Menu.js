@@ -2,7 +2,7 @@ import { styled } from '@material-ui/core';
 import Box from '@material-ui/core/Box/Box';
 import React from 'react';
 
-export const Menu = styled(props => <Box {...props} component="ul" />)(() => ({
+const Menu = styled(props => <Box {...props} component="ul" />)(() => ({
   position: 'relative',
   top: 0,
   left: 0,
@@ -52,3 +52,6 @@ export const Menu = styled(props => <Box {...props} component="ul" />)(() => ({
     },
   },
 }));
+
+
+export default Menu;

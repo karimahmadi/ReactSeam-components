@@ -7,7 +7,7 @@
 import React, { useState } from 'react';
 import jMoment from 'moment-jalaali';
 import PropTypes from 'prop-types';
-import { styled, withTheme } from '@material-ui/core/styles';
+import { styled } from '@material-ui/core/styles';
 import { Input } from '../Input';
 
 const InputDate = styled(Input)({
@@ -151,6 +151,8 @@ function Date(props) {
       onChange={handleChange}
       onBlur={handleBlur}
       onFocus={handleFocus}
+      disabled={props.disabled}
+      readOnly={props.readOnly}
     />
   );
 }
@@ -161,6 +163,8 @@ Date.propTypes = {
   onChange: PropTypes.func,
   name: PropTypes.string,
   currentDate: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  disabled: PropTypes.bool,
+  readOnly: PropTypes.bool,
 };
 
 export default Date;

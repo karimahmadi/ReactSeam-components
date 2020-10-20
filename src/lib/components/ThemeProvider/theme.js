@@ -3,13 +3,13 @@ const theme = {
     grey: {
       50: '#fff',
       200: '#ebebeb',
-      400: '#ebebeb',
+      300: '#e0e0e0' /* disabled Input background color */,
+      400: '#ebebeb' /* document body default background color */,
       900: '#000000',
     },
     background: {
       paper: '#ebebeb',
       default: '#d3d3d3',
-      bgColor: '#ebebeb',
     },
   },
   typography: {
