@@ -120,6 +120,7 @@ module.exports = (env, argv) => {
       'DateTimePicker/index': './src/lib/components/DateTimePicker/index.js',
       'FileUpload/index': './src/lib/components/FileUpload/index.js',
       'NumberInput/index': './src/lib/components/NumberInput/index.js',
+      'Grid/index': './src/lib/components/Grid/index.js',
     };
     config.externals = [
       'react',

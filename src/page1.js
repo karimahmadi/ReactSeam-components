@@ -1,8 +1,6 @@
 import React, { Fragment } from 'react';
 import { render } from 'react-dom';
-import Grid from '@material-ui/core/Grid/Grid';
 import ButtonGroup from '@material-ui/core/ButtonGroup/ButtonGroup';
-import { withStyles } from '@material-ui/core';
 import { ModalProvider } from './lib/components/Modal';
 import { Section } from './lib/components/Section';
 import { ThemeProvider } from './lib/components/ThemeProvider';
@@ -11,12 +9,7 @@ import { Input } from './lib/components/Input';
 import { Date } from './lib/components/Date';
 import { Button } from './lib/components/Button';
 import { DataTable } from './lib/components/DataTable';
-
-const GridEx = withStyles(() => ({
-  item: {
-    minWidth: 'fit-content',
-  },
-}))(Grid);
+import { Grid } from './lib/components/Grid';
 
 const TestSection = () => {
   const useData = () => [
@@ -94,26 +87,26 @@ const TestSection = () => {
   return (
     <Fragment>
       <Section title="تقویم تعطیلات سامانه چکاوک">
-        <GridEx container alignItems="center" spacing={0}>
-          <GridEx item lg={1} md={1} sm={1} xs={1}>
+        <Grid container alignItems="center" spacing={0}>
+          <Grid item lg={1} md={1} sm={1} xs={1}>
             <Label>از تاریخ :</Label>
-          </GridEx>
-          <GridEx item lg={2} md={2} sm={2} xs={2}>
-            <Date/>
-          </GridEx>
-          <GridEx item lg={1} md={1} sm={1} xs={1}>
-            <Label>تا تاریخ :</Label>
-          </GridEx>
-          <GridEx item lg={2} md={2} sm={2} xs={2}>
+          </Grid>
+          <Grid item lg={2} md={2} sm={2} xs={2}>
             <Date />
-          </GridEx>
-          <GridEx item lg={1} md={1} sm={1} xs={1}>
+          </Grid>
+          <Grid item lg={1} md={1} sm={1} xs={1}>
+            <Label>تا تاریخ :</Label>
+          </Grid>
+          <Grid item lg={2} md={2} sm={2} xs={2}>
+            <Date />
+          </Grid>
+          <Grid item lg={1} md={1} sm={1} xs={1}>
             <Label>نوع تعطیلی :</Label>
-          </GridEx>
-          <GridEx item lg={3} md={3} sm={3} xs={3}>
+          </Grid>
+          <Grid item lg={3} md={3} sm={3} xs={3}>
             <Input />
-          </GridEx>
-        </GridEx>
+          </Grid>
+        </Grid>
       </Section>
       <Section grid>
         <Grid container spacing={1}>
