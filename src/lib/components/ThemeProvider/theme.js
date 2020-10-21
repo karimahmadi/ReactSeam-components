@@ -15,7 +15,7 @@ const theme = {
   typography: {
     fontWeightRegular: 400,
     fontFamily: 'B Yekan',
-    fontSize: 14, // default 14px
+    fontSize: 16, // default 14px
     htmlFontSize: 16, // default html font size 16px
     button: {
       fontFamily: 'B Titr',

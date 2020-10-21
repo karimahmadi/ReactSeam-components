@@ -124,8 +124,10 @@ module.exports = (env, argv) => {
     config.externals = [
       'react',
       'react-dom',
+      'react-file-reader-input',
       'react-router-dom',
       'react-number-format',
+      '@date-io/jalaali',
       /^@material-ui\/.+$/,
       /^moment.*$/,
       'uuid',

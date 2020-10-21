@@ -8,6 +8,7 @@ const InputLabel = styled(withTheme(MuiInputLable))(props => ({
   whiteSpace: 'nowrap',
   textAlign: 'left',
   color: 'black',
+  display: 'inline-block',
 }));
 
 export default InputLabel;

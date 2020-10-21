@@ -85,12 +85,13 @@ const DataGrid = ({
   const renderColumn = column => (
     <EasGridColumn
       key={column.props.field}
-      title={column.props.headerName}
+      title={column.props.title}
       field={column.props.field}
       rowspan={column.props.rowspan}
       colspan={column.props.colspan}
       frozen={column.props.frozen}
       sortable={column.props.sortable}
+      align={column.props.align}
       render={({ row }) =>
         renderCell(
           row,

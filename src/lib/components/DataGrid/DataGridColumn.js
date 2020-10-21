@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 const DataGridColumn = ({
-  headerName,
+  title,
   field,
   filter,
   type,
@@ -10,9 +10,10 @@ const DataGridColumn = ({
   render,
   frozen,
   sortable,
+  align,
 }) => (
   <Fragment
-    title={headerName}
+    title={title}
     field={field}
     type={type}
     filter={filter}
@@ -21,10 +22,11 @@ const DataGridColumn = ({
     render={render}
     frozen={frozen}
     sortable={sortable}
+    align={align}
   />
 );
 DataGridColumn.propTypes = {
-  headerName: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   field: PropTypes.string,
   type: PropTypes.string,
   filter: PropTypes.string,
@@ -33,5 +35,6 @@ DataGridColumn.propTypes = {
   render: PropTypes.any,
   frozen: PropTypes.bool,
   sortable: PropTypes.bool,
+  align: PropTypes.string,
 };
 export { DataGridColumn };

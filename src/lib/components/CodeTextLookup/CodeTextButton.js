@@ -1,7 +1,10 @@
 import { styled, withTheme } from '@material-ui/core/styles';
-import { Button as MuiButton } from '@material-ui/core';
+import { Button } from '../Button';
 
-export const CodeTextButton = styled(withTheme(MuiButton))(props => ({
-  minWidth: props.theme.spacing(3),
-  padding: 0,
+export const CodeTextButton = styled(withTheme(Button))(props => ({
+  minWidth: 'auto',
+  padding: '0 4px',
+  margin: '0 0 0 0',
+  height: '22px',
+  display: props.hidebutton ? 'none' : 'inline-block',
 }));
