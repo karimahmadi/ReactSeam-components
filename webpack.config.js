@@ -136,6 +136,9 @@ module.exports = (env, argv) => {
       'styled-components',
       'numeral',
       'rc-easyui',
+      'rsuite-table',
+      'react-js-pagination',
+      'lodash',
     ];
     return config;
   }

@@ -1,7 +1,7 @@
 import React from 'react';
-import Checkbox from '../Checkbox';
 import { Cell } from 'rsuite-table';
 import PropTypes from 'prop-types';
+import Checkbox from '../Checkbox';
 const CheckCell = ({ rowData, onChange, checkedKeys, dataKey, ...props }) => {
   if (!rowData[dataKey]) {
     throw new Error('DataGrid: please enter correct datakey for data');

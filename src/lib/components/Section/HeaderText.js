@@ -6,6 +6,6 @@ export const HeaderText = styled(withTheme(MuiBox))(() => ({
   fontFamily: 'B Titr',
   padding: '2px',
   borderRadius: '0',
-  fontSize: '11pt',
+  fontSize: '0.9em',
   margin: '-16px auto -5px auto',
 }));
