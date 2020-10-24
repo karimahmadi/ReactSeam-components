@@ -20,7 +20,23 @@
   "bugs": {
     "url": ""
   },
+	"browserslist": [
+		"last 2 versions",
+		"> 1%",
+		"IE 10"
+	],
   "homepage": "",
+	"lint-staged": {
+		"*.js": [
+			"npm run lint:eslint:fix",
+			"git add --force"
+		],
+		"*.json": [
+			"prettier --write",
+			"git add --force"
+		]
+	},
+	"pre-commit": "lint:staged",
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
