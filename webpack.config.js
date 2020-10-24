@@ -121,6 +121,7 @@ module.exports = (env, argv) => {
       'FileUpload/index': './src/lib/components/FileUpload/index.js',
       'NumberInput/index': './src/lib/components/NumberInput/index.js',
       'Grid/index': './src/lib/components/Grid/index.js',
+      'RDataGrid/index': './src/lib/components/RDataGrid/index.js',
     };
     config.externals = [
       'react',
