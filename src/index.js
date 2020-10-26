@@ -9,6 +9,7 @@ import { ThemeProvider } from './lib/components/ThemeProvider';
 import { InputLabel as Label } from './lib/components/InputLabel';
 import { Date } from './lib/components/Date';
 import { Button } from './lib/components/Button';
+import {Input} from './lib/components/Input';
 import DataGrid, { DataGridColumn } from './lib/components/DataGrid';
 import { CodeTextLookup } from './lib/components/CodeTextLookup';
 import { CodeCombo } from './lib/components/CodeCombo';
@@ -52,13 +53,13 @@ const TestSection = () => {
 
   return (
     <Fragment>
-      <Section title="حساب های برداشت کارمزد">
+      <Section title="گزارش اطلاعات قرارداد">
         <Grid container>
           <Grid item lg={2} md={2} sm={2} xs={2} left>
-            <Label>شماره حساب:</Label>
+            <Label>شماره قرارداد:</Label>
           </Grid>
           <Grid item lg={3} md={3} sm={3} xs={3}>
-            <CodeTextLookup ratio="1:1" hidebutton />
+            <Input />
           </Grid>
           <Grid item lg={2} md={2} sm={2} xs={2} left>
             <Label>شماره حساب برداشت کارمزد:</Label>

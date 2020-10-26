@@ -1,15 +1,26 @@
 {
   "name": "@tatareact/core",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Core components for TaTa react applications",
   "license": "ISC",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --open",
+    "start": "webpack-dev-server --host 0.0.0.0 --open",
     "build": "webpack --mode production",
     "docz:dev": "docz dev",
-    "docz:build": "docz build"
+    "docz:build": "docz build",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:css": "stylelint app/**/*.js",
+    "lint:eslint": "eslint --ignore-path .gitignore",
+    "lint:eslint:fix": "eslint --ignore-path .gitignore --fix",
+    "lint:js": "npm run lint:eslint -- . ",
+    "lint:staged": "lint-staged",
+    "pretest": "npm run test:clean && npm run lint",
+    "test:clean": "rimraf ./coverage",
+    "test": "cross-env NODE_ENV=test jest --coverage",
+    "test:watch": "cross-env NODE_ENV=test jest --watchAll",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "prettify": "prettier --write"
   },
   "repository": {
     "type": "git",
@@ -20,7 +31,23 @@
   "bugs": {
     "url": ""
   },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "IE 10"
+  ],
   "homepage": "",
+  "lint-staged": {
+    "*.js": [
+      "npm run lint:eslint:fix",
+      "git add --force"
+    ],
+    "*.json": [
+      "prettier --write",
+      "git add --force"
+    ]
+  },
+  "pre-commit": "lint:staged",
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
@@ -37,21 +64,20 @@
     "eslint-config-prettier": "4.1.0",
     "eslint-plugin-prettier": "3.0.1",
     "eslint-plugin-react-hooks": "1.6.0",
+    "lint-staged": "8.1.5",
     "node-sass": "^4.9.3",
-    "numeral": "^2.0.6",
-    "moment": "2.27.0",
-    "moment-jalaali": "0.9.2",
+    "pre-commit": "1.2.2",
+    "prettier": "1.17.0",
     "prop-types": "15.7.2",
     "rc-easyui": "^1.1.27",
     "react": "^16.8.6",
-		"react-is": "^17.0.0",
+    "react-is": "^17.0.0",
     "react-dom": "^16.8.6",
     "react-file-reader-input": "^2.0.0",
     "react-number-format": "^4.4.1",
     "react-router-dom": "^5.0.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
-    "styled-components": "^5.2.0",
     "url-loader": "^1.1.2",
     "uuid": "^8.3.1",
     "webpack": "^4.28.3",
@@ -59,5 +85,23 @@
     "webpack-dev-server": "^3.11.0"
   },
   "peerDependencies": {},
-  "dependencies": {}
+  "dependencies": {
+    "@date-io/jalaali": "^1.3.13",
+    "@material-ui/core": "^4.9.13",
+    "@material-ui/lab": "^4.0.0-alpha.56",
+    "numeral": "^2.0.6",
+    "moment": "2.27.0",
+    "moment-jalaali": "0.9.2",
+    "uuid": "^8.3.1",
+    "rc-easyui": "^1.1.27",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-file-reader-input": "^2.0.0",
+    "react-number-format": "^4.4.1",
+    "react-router-dom": "^5.0.0",
+    "styled-components": "^5.2.0",
+    "lodash": "^4.17.11",
+    "rsuite-table": "^3.13.1",
+    "react-js-pagination": "^3.0.3"
+  }
 }
