@@ -4,7 +4,7 @@ import {ModalProvider,useModal} from '@tatareact/core';
 
 const TestModal = () => {
   const {openError} = useModal();
-  return <button onClick={()=>openError("modal from tatareact code ")}>click me</button>
+  return <button onClick={()=>openError("modal from tatareact code ",onClose)}>click me</button>
 };
 
 function App() {

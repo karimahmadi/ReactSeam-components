@@ -23,8 +23,8 @@ function NumberFormat(props) {
 }
 
 NumberFormat.propTypes = {
-  inputRef: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
+  inputRef: PropTypes.func,
+  onChange: PropTypes.func,
   name: PropTypes.string,
 };
 

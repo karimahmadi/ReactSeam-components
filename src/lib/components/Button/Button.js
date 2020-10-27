@@ -27,7 +27,6 @@ function Button({
   function handleClick(e) {
     if (typeof onClick === 'function') onClick(e);
   }
-
   return (
     <MatButton
       disabled={disabled}
