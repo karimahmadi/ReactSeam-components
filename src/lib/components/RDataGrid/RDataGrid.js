@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, { Fragment, useState, useEffect } from 'react';
-// import numeral from 'numeral';
+import numeral from 'numeral';
 import arrayUtil from 'lodash';
 
 import PropTypes from 'prop-types';
@@ -169,6 +169,9 @@ const RDataGrid = ({
           column(
             columnChild,
             columnChild.props.colSpan,
+            columnChild.props.fixed,
+            columnChild.props.align,
+            columnChild.props.width,
             columnChild.props.renderHeaderCellChildren,
           ),
         );
@@ -177,6 +180,9 @@ const RDataGrid = ({
           column(
             columnChild,
             columnChild.props.colSpan,
+            columnChild.props.fixed,
+            columnChild.props.align,
+            columnChild.props.width,
             undefined,
             columnChild.props.renderCellChildren,
           ),
@@ -186,6 +192,9 @@ const RDataGrid = ({
           column(
             columnChild,
             columnChild.props.colSpan,
+            columnChild.props.fixed,
+            columnChild.props.align,
+            columnChild.props.width,
             columnChild.props.renderHeaderCellChildren,
             columnChild.props.renderCellChildren,
           ),
@@ -214,22 +223,37 @@ const RDataGrid = ({
     </ColumnGroup>
   );
 
-  const column = inputColumnChildren => (
-    <Column
-      resizable={inputColumnChildren.props.resizable}
-      sortable={inputColumnChildren.props.sortable}
-    >
-      {typeof inputColumnChildren.props.renderHeaderCellChildren ===
-      'function'
-        ? renderHeaderCellChildren(
-          inputColumnChildren.props.headerName,
-          inputColumnChildren.props.renderHeaderCellChildren,)
-        : header(inputColumnChildren.props.headerName)}{typeof inputColumnChildren.props.renderCellChildren === 'function'? renderCellChildren(
+  const column = inputColumnChildren => {
+    let insideColumnHeader;
+    let insideColumnCell;
+    if(inputColumnChildren.props.type)
+    {
+      insideColumnCell = renderColumnWithFormatter(inputColumnChildren.props.headerName, inputColumnChildren.props.colSpan,
+        inputColumnChildren.props.type , findFormatter);
+    }
+    if(typeof inputColumnChildren.props.renderHeaderCellChildren === 'function')
+      insideColumnHeader = renderHeaderCellChildren( inputColumnChildren.props.headerName, inputColumnChildren.props.renderHeaderCellChildren,);
+    else
+      insideColumnHeader = header(inputColumnChildren.props.headerName);
+    if(typeof inputColumnChildren.props.renderCellChildren === 'function')
+      insideColumnCell = renderCellChildren(
         inputColumnChildren.props.headerName,
         inputColumnChildren.props.colSpan,
-        inputColumnChildren.props.renderCellChildren,): cell(inputColumnChildren.props.headerName,inputColumnChildren.props.colSpan,)}
-    </Column>
-  );
+        inputColumnChildren.props.renderCellChildren,)
+    else if (!inputColumnChildren.props.type)
+      insideColumnCell = cell(inputColumnChildren.props.headerName,inputColumnChildren.props.colSpan,);
+    return (
+      <Column
+        resizable={inputColumnChildren.props.resizable}
+        sortable={inputColumnChildren.props.sortable}
+        fixed={inputColumnChildren.props.fixed}
+        align={inputColumnChildren.props.align}
+        width={inputColumnChildren.props.width}
+      >
+        {insideColumnHeader}{insideColumnCell}
+      </Column>
+    )
+  };
   const header = headerName => <HeaderCell>{headerName}</HeaderCell>;
   const cell = (headerName, colSpan) => (
     <Cell dataKey={headerName} colSpan={colSpan} />
@@ -243,9 +267,16 @@ const RDataGrid = ({
       {(rowData, rowIndex) => renderCellChildrenFunc(rowData, rowIndex)}
     </Cell>
   );
+  const renderColumnWithFormatter = (headerName, colSpan, formatter, formatterFunc) => (
+    <Cell dataKey={headerName} colSpan={colSpan}>
+      {rowData => formatterFunc(formatter, rowData[headerName])}
+    </Cell>
+  );
   return (
     <Fragment>
       <Table
+        bordered
+        cellBordered
         // rownumbers={rownumbers}
         data={data}
         // rowSelection={rowSelection}
@@ -286,16 +317,16 @@ const RDataGrid = ({
   );
 };
 
-// const findFormatter = (formatter, value) => {
-//   if (formatter === 'currency') {
-//     return currencyFormatter(value);
-//   }
-//   return undefined;
-// };
+const findFormatter = (formatter, value) => {
+  if (formatter === 'currency') {
+    return currencyFormatter(value);
+  }
+  return undefined;
+};
 
-// function currencyFormatter(value) {
-//   return numeral(value).format('0,0.00');
-// }
+function currencyFormatter(value) {
+  return numeral(value).format('0,0.00');
+}
 
 RDataGrid.propTypes = {
   dataKey: PropTypes.string,
