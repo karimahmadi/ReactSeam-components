@@ -2,6 +2,8 @@
 // matter which part of your file system your library lives in
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
+const Webpack = require('webpack');
+const Package = require('./package.json');
 
 // Webpack is just a bunch of keys on module.exports!
 const config = {
@@ -82,7 +84,19 @@ const config = {
     new CopyPlugin({
       patterns: [
         { from: 'src/lib/components/index.js', to: 'index.js' },
-        { from: 'src/lib/package.tmp', to: 'package.json' },
+        {
+          from: 'src/lib/package.tmp',
+          to: 'package.json',
+          transform(content) {
+            return content
+              .toString()
+              .replace('[VERSION]', Package.version)
+              .replace(
+                '[DEPENDECIES]',
+                JSON.stringify(Package.dependencies, null, 4),
+              );
+          },
+        },
         { from: 'src/lib/README.md', to: 'README.md' },
         {
           from: 'src/lib/components/**/README.md',
@@ -107,6 +121,10 @@ const config = {
           },
         },
       ],
+    }),
+    new Webpack.BannerPlugin({
+      banner: `${Package.name} - ${Package.version}`,
+      entryOnly: true,
     }),
   ],
 };
