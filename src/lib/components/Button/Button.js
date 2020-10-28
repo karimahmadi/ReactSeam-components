@@ -16,6 +16,7 @@ function Button({
   children,
   onClick,
   skip,
+  href,
   dispatch,
   ADD_TO_REF_LIST,
 }) {
@@ -41,6 +42,7 @@ function Button({
       startIcon={startIcon}
       endIcon={endIcon}
       ref={buttonRef}
+      href={href}
     >
       {children}
     </MatButton>
@@ -63,6 +65,7 @@ Button.propTypes = {
   skip: PropTypes.bool,
   dispatch: PropTypes.func,
   ADD_TO_REF_LIST: PropTypes.any,
+  href: PropTypes.string,
 };
 
 export default Button;

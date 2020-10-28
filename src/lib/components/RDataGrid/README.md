@@ -1,0 +1,42 @@
+```$xslt
+ <RDataGrid
+        selectionMode="multiple"
+        data={state.data}
+        pageRangeDisplayed={3}
+        total={5}
+        onChangePage={handlePageChange}
+        onChangePageSize={handleChangePageSize}
+        pageNumber={state.currentPage}
+        loading={state.loading}
+        onSortColumn={handleSortColumn}
+        selection
+        selectionColor="#CCC"
+        showRowNumberColumn
+        onRowSingleSelection={handleSingleSelectionChange}
+        headerHeight={80}
+        height={420}
+    >
+        <RDataGridColumnGroup
+        header="id"
+        colSpan={2}
+        align="center"
+        verticalAlign="middle"
+        >
+        <RDataGridColumn headerName="id" field="id" resizable sortable />
+        <RDataGridColumn
+            headerName="userId"
+            field="userId"
+            resizable
+            sortable
+        />
+        </RDataGridColumnGroup>
+        <RDataGridColumn
+        headerName="title"
+        field="title"
+        resizable
+        sortable
+        renderCellChildren={rowData => <p>{rowData.title}</p>}
+        renderHeaderCellChildren={headerName => <div>{headerName}</div>}
+        />
+    </RDataGrid>
+```

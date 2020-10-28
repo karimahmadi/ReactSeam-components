@@ -84,18 +84,27 @@ const config = {
         { from: 'src/lib/components/index.js', to: 'index.js' },
         { from: 'src/lib/package.tmp', to: 'package.json' },
         { from: 'src/lib/README.md', to: 'README.md' },
-        { from: 'src/lib/components/Modal/README.md', to: 'Modal/README.md' },
         {
-          from: 'src/lib/components/CodeCombo/README.md',
-          to: 'CodeCombo/README.md',
-        },
-        {
-          from: 'src/lib/components/CodeTextLookup/README.md',
-          to: 'CodeTextLookup/README.md',
-        },
-        {
-          from: 'src/lib/components/AmountInput/README.md',
-          to: 'AmountInput/README.md',
+          from: 'src/lib/components/**/README.md',
+          transformPath(targetPath) {
+            return targetPath.replace('src/lib/components/', '');
+          },
+          filter: async resourcePath => {
+            if (
+              new RegExp(
+                [
+                  'InputText',
+                  'Label',
+                  'LoadingIndicator',
+                  'MainContainer',
+                  'MainSection',
+                ].join('|'),
+              ).test(resourcePath)
+            ) {
+              return false;
+            }
+            return true;
+          },
         },
       ],
     }),
@@ -107,6 +116,7 @@ module.exports = (env, argv) => {
     config.mode = 'production';
     config.output.filename = '[name].js';
     config.entry = {
+      'Accordion/index': './src/lib/components/Accordion/index.js',
       'AmountInput/index': './src/lib/components/AmountInput/index.js',
       'Button/index': './src/lib/components/Button/index.js',
       'Checkbox/index': './src/lib/components/Checkbox/index.js',
@@ -129,12 +139,14 @@ module.exports = (env, argv) => {
       'NumberInput/index': './src/lib/components/NumberInput/index.js',
       'RDataGrid/index': './src/lib/components/RDataGrid/index.js',
       'Section/index': './src/lib/components/Section/index.js',
+      'Tab/index': './src/lib/components/Tab/index.js',
       'ThemeProvider/index': './src/lib/components/ThemeProvider/index.js',
     };
     config.externals = [
       'react',
       'react-dom',
       'react-file-reader-input',
+      'react-intl',
       'react-router-dom',
       'react-number-format',
       '@date-io/jalaali',
