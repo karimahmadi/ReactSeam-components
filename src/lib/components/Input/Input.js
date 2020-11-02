@@ -33,6 +33,7 @@ const Input = styled(
     display: props.required ? 'flex' : 'none',
     '& p': {
       color: 'red',
+      height: '23px',
     },
   },
 }));
