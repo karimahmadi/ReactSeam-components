@@ -17,8 +17,8 @@ const Input = styled(
   lineHeight: '1.42857143',
   color: '#555',
   backgroundImage: 'none',
-  // border: '1px solid #ccc',
-  // boxShadow: 'inset 0 1px 1px rgba(0,0,0,.075)',
+  paddingLeft: props.theme.spacing(0),
+  paddingRight: props.theme.spacing(0.5),
   transition: 'border-color ease-in-out .15s,box-shadow ease-in-out .15s',
   '& input': {
     padding: '3px 3px',
@@ -29,7 +29,7 @@ const Input = styled(
     backgroundColor: props.theme.palette.grey[300],
   },
   '& div': {
-    marginLeft: '-7px',
+    marginLeft: props.theme.spacing(-1),
     display: props.required ? 'flex' : 'none',
     '& p': {
       color: 'red',

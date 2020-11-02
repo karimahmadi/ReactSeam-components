@@ -83,7 +83,7 @@ const TestSection = () => {
           <Grid item lg={3} md={3} sm={3} xs={3}>
             <Date />
             <Label>تا:</Label>
-            <Date />
+            <Date required />
           </Grid>
           <Grid item lg={2} md={2} sm={2} xs={2} left />
 
