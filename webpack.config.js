@@ -92,7 +92,7 @@ const config = {
               .toString()
               .replace('[VERSION]', Package.version)
               .replace(
-                '[DEPENDECIES]',
+                '[DEPENDENCIES]',
                 JSON.stringify(Package.dependencies, null, 4),
               );
           },

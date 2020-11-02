@@ -1,7 +1,16 @@
 import { styled, withTheme } from '@material-ui/core/styles';
 import { OutlinedInput as MuiOutlinedInput } from '@material-ui/core';
+import InputAdornment from '@material-ui/core/InputAdornment/InputAdornment';
+import React from 'react';
 
-const Input = styled(withTheme(MuiOutlinedInput))(props => ({
+const Input = styled(
+  withTheme(props => (
+    <MuiOutlinedInput
+      {...props}
+      endAdornment={<InputAdornment position="start">*</InputAdornment>}
+    />
+  )),
+)(props => ({
   width: '100%',
   backgroundColor: props.theme.palette.grey[50],
   height: '23px',
@@ -19,7 +28,13 @@ const Input = styled(withTheme(MuiOutlinedInput))(props => ({
   '&.Mui-disabled': {
     backgroundColor: props.theme.palette.grey[300],
   },
+  '& div': {
+    marginLeft: '-7px',
+    display: props.required ? 'flex' : 'none',
+    '& p': {
+      color: 'red',
+    },
+  },
 }));
-
 
 export default Input;

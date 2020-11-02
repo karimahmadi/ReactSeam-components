@@ -9,7 +9,7 @@ import { ThemeProvider } from './lib/components/ThemeProvider';
 import { InputLabel as Label } from './lib/components/InputLabel';
 import { Date } from './lib/components/Date';
 import { Button } from './lib/components/Button';
-import {Input} from './lib/components/Input';
+import { Input } from './lib/components/Input';
 import DataGrid, { DataGridColumn } from './lib/components/DataGrid';
 import { CodeTextLookup } from './lib/components/CodeTextLookup';
 import { CodeCombo } from './lib/components/CodeCombo';
@@ -59,7 +59,7 @@ const TestSection = () => {
             <Label>شماره قرارداد:</Label>
           </Grid>
           <Grid item lg={3} md={3} sm={3} xs={3}>
-            <Input />
+            <Input required />
           </Grid>
           <Grid item lg={2} md={2} sm={2} xs={2} left>
             <Label>شماره حساب برداشت کارمزد:</Label>
@@ -67,7 +67,7 @@ const TestSection = () => {
           <Grid item lg={3} md={3} sm={3} xs={3}>
             <CodeTextLookup ratio="1:1" hidebutton />
           </Grid>
-          <Grid item lg={2} md={2} sm={2} xs={2}></Grid>
+          <Grid item lg={2} md={2} sm={2} xs={2} />
 
           <Grid item lg={2} md={2} sm={2} xs={2} left>
             <Label>تاریخ شروع اعتبار از:</Label>
@@ -85,7 +85,7 @@ const TestSection = () => {
             <Label>تا:</Label>
             <Date />
           </Grid>
-          <Grid item lg={2} md={2} sm={2} xs={2} left></Grid>
+          <Grid item lg={2} md={2} sm={2} xs={2} left />
 
           <Grid item lg={2} md={2} sm={2} xs={2} left>
             <Label>وضعیت:</Label>

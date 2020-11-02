@@ -22,5 +22,5 @@
 		"IE 10"
 	],
   "homepage": "",
-  "peerDependencies": [DEPENDECIES]
+  "peerDependencies": [DEPENDENCIES]
 }
