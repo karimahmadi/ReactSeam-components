@@ -1,3 +1,3 @@
 ```$xslt
-<NumberInput name="" value={value} onChange={onChange} />
+<NumberInput name="" value={value} onChange={onChange} required />
 ```

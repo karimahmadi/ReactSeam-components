@@ -4,5 +4,6 @@
 	value={debtRemainingControlConfig.totalRemainingPayment}
 	onChange={onChange}
 	disabled
+	required
 />
 ```
