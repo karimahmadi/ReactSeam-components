@@ -59,6 +59,20 @@ const TestSection = () => {
             <Label>شماره قرارداد:</Label>
           </Grid>
           <Grid item lg={3} md={3} sm={3} xs={3}>
+            <Input />
+          </Grid>
+          <Grid item lg={2} md={2} sm={2} xs={2} left>
+            <Label>شماره حساب برداشت کارمزد:</Label>
+          </Grid>
+          <Grid item lg={3} md={3} sm={3} xs={3}>
+            <CodeTextLookup ratio="1:1" required />
+          </Grid>
+          <Grid item lg={2} md={2} sm={2} xs={2} />
+
+          <Grid item lg={2} md={2} sm={2} xs={2} left>
+            <Label>شماره قرارداد:</Label>
+          </Grid>
+          <Grid item lg={3} md={3} sm={3} xs={3}>
             <Input required />
           </Grid>
           <Grid item lg={2} md={2} sm={2} xs={2} left>
@@ -91,7 +105,7 @@ const TestSection = () => {
             <Label>وضعیت:</Label>
           </Grid>
           <Grid item lg={2} md={2} sm={2} xs={2}>
-            <CodeCombo items={[]} />
+            <CodeCombo items={[]} required />
           </Grid>
         </Grid>
       </Section>

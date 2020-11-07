@@ -11,6 +11,7 @@ import { ContainerControl } from './ContainerControl';
 import { CodeInput } from './CodeInput';
 import { Select } from './Select';
 import { Input } from '../Input';
+import { Asteriks } from '../CodeTextLookup/Asteriks';
 
 function CodeCombo({
   items,
@@ -30,11 +31,13 @@ function CodeCombo({
   onKeyPress,
   onBlur,
   onFocus,
+  required = false,
 }) {
   const [code, setCode] = React.useState(value || '');
 
   useEffect(() => {
-    setCode(value);
+    if (value) setCode(value);
+    else setCode('');
   }, [value]);
 
   const handleChange = event => {
@@ -104,6 +107,7 @@ function CodeCombo({
         <option aria-label="None" value="" />
         {renderItems(items)}
       </Select>
+      {required && <Asteriks>*</Asteriks>}
     </ContainerControl>
   );
 }
@@ -126,6 +130,7 @@ CodeCombo.propTypes = {
   onKeyPress: PropTypes.func,
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,
+  required: PropTypes.bool,
 };
 
 export default CodeCombo;
