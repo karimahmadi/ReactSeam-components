@@ -7,12 +7,7 @@
 import React, { useState } from 'react';
 import jMoment from 'moment-jalaali';
 import PropTypes from 'prop-types';
-import { styled } from '@material-ui/core/styles';
-import { Input } from '../Input';
-
-const InputDate = styled(Input)({
-  width: '100px',
-});
+import { InputDate } from './InputDate';
 
 function Date(props) {
   const [value, setValue] = useState(props.value || '');

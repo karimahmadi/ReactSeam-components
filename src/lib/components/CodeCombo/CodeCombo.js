@@ -32,6 +32,7 @@ function CodeCombo({
   onBlur,
   onFocus,
   required = false,
+  inputRef,
 }) {
   const [code, setCode] = React.useState(value || '');
 
@@ -95,6 +96,7 @@ function CodeCombo({
         onKeyPress={onKeyPress}
         onBlur={onBlur}
         onFocus={onFocus}
+        inputRef={inputRef}
       />
       <Select
         native
@@ -131,6 +133,7 @@ CodeCombo.propTypes = {
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,
   required: PropTypes.bool,
+  inputRef: PropTypes.object,
 };
 
 export default CodeCombo;

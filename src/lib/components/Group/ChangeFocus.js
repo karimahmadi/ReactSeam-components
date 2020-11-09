@@ -13,17 +13,19 @@ const ChangeFocus = () => {
   // eslint-disable-next-line no-unused-vars
   const [state, dispatch] = useContext(ComponentContext);
   const [refList, setRefList] = useState([]);
-
   const [currentIndex, setCurrentIndex] = useState(-1);
+
   useEffect(() => {
     document.addEventListener('keydown', enterKeyPressHandler);
     return () => {
       document.removeEventListener('keydown', enterKeyPressHandler);
     };
   }, [refList, currentIndex]);
+
   useEffect(() => {
     setRefList(state.ref);
   }, [state.ref, refList]);
+
   useEffect(() => {
     if (state.focused) {
       setCurrentIndex(0);
@@ -36,6 +38,7 @@ const ChangeFocus = () => {
       });
     }
   }, [state.focused, refList]);
+
   const enterKeyPressHandler = e => {
     let localIndex = currentIndex;
     if (!e.ctrlKey && e.key === 'Enter') {

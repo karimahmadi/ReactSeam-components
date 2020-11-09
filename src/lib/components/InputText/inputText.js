@@ -40,11 +40,14 @@ function InputText({
   ADD_TO_REF_LIST,
   ADD_REF_TO_FOCUS,
 }) {
-  const inputRef = useRef(null);
+
+	const inputRef = useRef(null);
+
   useEffect(() => {
     if (!skip && !disabled && !readOnly && dispatch)
       dispatch({ type: ADD_TO_REF_LIST, payload: inputRef });
   }, [inputRef, skip, disabled, readOnly]);
+
   const styles = useStyles();
   function handleOnChange(e) {
     onChange(e);

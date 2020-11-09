@@ -1,16 +1,7 @@
 import { styled, withTheme } from '@material-ui/core/styles';
-import { OutlinedInput as MuiOutlinedInput } from '@material-ui/core';
-import InputAdornment from '@material-ui/core/InputAdornment/InputAdornment';
-import React from 'react';
+import { InputBase } from './InputBase';
 
-const Input = styled(
-  withTheme(props => (
-    <MuiOutlinedInput
-      {...props}
-      endAdornment={<InputAdornment position="start">*</InputAdornment>}
-    />
-  )),
-)(props => ({
+const Input = styled(withTheme(InputBase))(props => ({
   width: '100%',
   backgroundColor: props.theme.palette.grey[50],
   height: '23px',
