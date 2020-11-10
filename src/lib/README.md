@@ -1,5 +1,9 @@
 
-### latest version : [0.2.2]
+### latest version : [0.2.3]
+## changes
+- removed style (lineHeight: 'initial') from Section component
+
+### [0.2.2]
 ## changes
 - added Yekan font to show Persian numbers
 - Input Component style changed (color,  fontFamily, and FontWeight)

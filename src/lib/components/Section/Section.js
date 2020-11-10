@@ -18,7 +18,7 @@ function Section({ children, title, width = '100%', grid }) {
           <HeaderText>{`« ${title} »`}</HeaderText>
         </Header>
       )}
-      <div style={{ paddingTop: '5px', lineHeight: 'initial' }}>{children}</div>
+      <div style={{ paddingTop: '5px' }}>{children}</div>
     </CardView>
   );
 }
