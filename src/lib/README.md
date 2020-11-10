@@ -2,7 +2,7 @@
 ### latest version : [0.2.2]
 ## changes
 - added Yekan font to show Persian numbers
--  
+- Input Component style changed (color,  fontFamily, and FontWeight)
 
 ### [0.2.1]
 ## Changes
