@@ -59,7 +59,7 @@ const TestSection = () => {
             <Label>شماره قرارداد:</Label>
           </Grid>
           <Grid item lg={3} md={3} sm={3} xs={3}>
-            <Input />
+            <Input disabled />
           </Grid>
           <Grid item lg={2} md={2} sm={2} xs={2} left>
             <Label>شماره حساب برداشت کارمزد:</Label>

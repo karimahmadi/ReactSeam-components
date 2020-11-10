@@ -15,7 +15,7 @@ const Input = styled(
   backgroundColor: props.theme.palette.grey[50],
   height: '23px',
   lineHeight: '1.42857143',
-  color: '#555',
+  color: 'black',
   backgroundImage: 'none',
   paddingLeft: props.theme.spacing(0),
   paddingRight: props.theme.spacing(0.5),
@@ -24,9 +24,11 @@ const Input = styled(
     padding: '3px 3px',
     fontSize: props.theme.typography.fontSize,
     fontFamily: props.theme.typography.fontFamily,
+    fontWeight: props.theme.typography.fontWeight,
   },
   '&.Mui-disabled': {
     backgroundColor: props.theme.palette.grey[300],
+    color: '#3a3838',
   },
   '& div': {
     marginLeft: props.theme.spacing(-1),
