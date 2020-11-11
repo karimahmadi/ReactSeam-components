@@ -6,5 +6,5 @@ export const CodeTextButton = styled(withTheme(Button))(props => ({
   padding: '0 4px',
   margin: '0 0 0 0',
   height: '22px',
-  display: props.hidebutton ? 'none' : 'inline-block',
+  display: props.hidebutton === 'hide' ? 'none' : 'inline-block',
 }));

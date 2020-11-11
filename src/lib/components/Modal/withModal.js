@@ -1,9 +1,27 @@
-import {useContext} from "react";
-import {ModalContext} from "./ModalContext";
-import {openError} from "./actions";
-import React from "react";
+import React, { useContext } from 'react';
+import { ModalContext } from './ModalContext';
+import {
+  openConfirm,
+  openError,
+  openInfo,
+  openModal,
+  openQuestion,
+} from './actions';
 
-export const withModal = (Component)=>(props)=>{
-	const [,dispatch] = useContext(ModalContext);
-	return <Component {...props} openError={(children,onClose)=>dispatch(openError(children,onClose))}/>
+export const withModal = Component => props => {
+  const [, dispatch] = useContext(ModalContext);
+  return (
+    <Component
+      {...props}
+      openError={(children, onClose) => dispatch(openError(children, onClose))}
+      openInfo={(children, onClose) => dispatch(openInfo(children, onClose))}
+      openConfirm={(children, onConfirm, onCancel) =>
+        dispatch(openConfirm(children, onConfirm, onCancel))
+      }
+      openQuestion={(children, onConfirm, onCancel) =>
+        dispatch(openQuestion(children, onConfirm, onCancel))
+      }
+      openModal={mProps => dispatch(openModal(mProps))}
+    />
+  );
 };

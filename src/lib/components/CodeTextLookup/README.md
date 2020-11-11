@@ -16,6 +16,6 @@
   };
 
 return (
-  <CodeTextLookup value={value} onChange={onCodeChange} onClick={onButtonClick} propertyCode="code" propertyTitle="title"/>
+  <CodeTextLookup value={value} onChange={onCodeChange} onClick={onButtonClick} propertyCode="code" propertyTitle="title" required />
 );
 ```

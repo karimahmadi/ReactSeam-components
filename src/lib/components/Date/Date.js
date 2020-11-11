@@ -153,6 +153,7 @@ function Date(props) {
       onFocus={handleFocus}
       disabled={props.disabled}
       readOnly={props.readOnly}
+      required={props.required}
     />
   );
 }
@@ -165,6 +166,7 @@ Date.propTypes = {
   currentDate: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   disabled: PropTypes.bool,
   readOnly: PropTypes.bool,
+  required: PropTypes.bool,
 };
 
 export default Date;

@@ -2,6 +2,8 @@
 // matter which part of your file system your library lives in
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
+const Webpack = require('webpack');
+const Package = require('./package.json');
 
 // Webpack is just a bunch of keys on module.exports!
 const config = {
@@ -82,18 +84,47 @@ const config = {
     new CopyPlugin({
       patterns: [
         { from: 'src/lib/components/index.js', to: 'index.js' },
-        { from: 'src/lib/package.tmp', to: 'package.json' },
-        { from: 'src/lib/README.md', to: 'README.md' },
-        { from: 'src/lib/components/Modal/README.md', to: 'Modal/README.md' },
         {
-          from: 'src/lib/components/CodeCombo/README.md',
-          to: 'CodeCombo/README.md',
+          from: 'src/lib/package.tmp',
+          to: 'package.json',
+          transform(content) {
+            return content
+              .toString()
+              .replace('[VERSION]', Package.version)
+              .replace(
+                '[DEPENDENCIES]',
+                JSON.stringify(Package.dependencies, null, 4),
+              );
+          },
         },
+        { from: 'src/lib/README.md', to: 'README.md' },
         {
-          from: 'src/lib/components/CodeTextLookup/README.md',
-          to: 'CodeTextLookup/README.md',
+          from: 'src/lib/components/**/README.md',
+          transformPath(targetPath) {
+            return targetPath.replace('src/lib/components/', '');
+          },
+          filter: async resourcePath => {
+            if (
+              new RegExp(
+                [
+                  'InputText',
+                  'Label',
+                  'LoadingIndicator',
+                  'MainContainer',
+                  'MainSection',
+                ].join('|'),
+              ).test(resourcePath)
+            ) {
+              return false;
+            }
+            return true;
+          },
         },
       ],
+    }),
+    new Webpack.BannerPlugin({
+      banner: `${Package.name} - ${Package.version}`,
+      entryOnly: true,
     }),
   ],
 };
@@ -103,30 +134,37 @@ module.exports = (env, argv) => {
     config.mode = 'production';
     config.output.filename = '[name].js';
     config.entry = {
-      'Modal/index': './src/lib/components/Modal/index.js',
-      'Section/index': './src/lib/components/Section/index.js',
-      'Input/index': './src/lib/components/Input/index.js',
-      'InputLabel/index': './src/lib/components/InputLabel/index.js',
-      'Button/index': './src/lib/components/Button/index.js',
-      'DataTable/index': './src/lib/components/DataTable/index.js',
-      'Date/index': './src/lib/components/Date/index.js',
-      'ThemeProvider/index': './src/lib/components/ThemeProvider/index.js',
-      'ChqMenu/index': './src/lib/components/ChqMenu/index.js',
+      'Accordion/index': './src/lib/components/Accordion/index.js',
       'AmountInput/index': './src/lib/components/AmountInput/index.js',
+      'Button/index': './src/lib/components/Button/index.js',
+      'Checkbox/index': './src/lib/components/Checkbox/index.js',
       'CheckboxGroup/index': './src/lib/components/CheckboxGroup/index.js',
+      'ChqMenu/index': './src/lib/components/ChqMenu/index.js',
       'CodeCombo/index': './src/lib/components/CodeCombo/index.js',
       'CodeTextLookup/index': './src/lib/components/CodeTextLookup/index.js',
       'DataGrid/index': './src/lib/components/DataGrid/index.js',
+      'DataTable/index': './src/lib/components/DataTable/index.js',
+      'Date/index': './src/lib/components/Date/index.js',
       'DateTimePicker/index': './src/lib/components/DateTimePicker/index.js',
+      'DownLoadFile/index': './src/lib/components/DownLoadFile/index.js',
       'FileUpload/index': './src/lib/components/FileUpload/index.js',
-      'NumberInput/index': './src/lib/components/NumberInput/index.js',
       'Grid/index': './src/lib/components/Grid/index.js',
+      'Group/index': './src/lib/components/Group/index.js',
+      'Input/index': './src/lib/components/Input/index.js',
+      'InputLabel/index': './src/lib/components/InputLabel/index.js',
+      'Layout/index': './src/lib/components/Layout/index.js',
+      'Modal/index': './src/lib/components/Modal/index.js',
+      'NumberInput/index': './src/lib/components/NumberInput/index.js',
       'RDataGrid/index': './src/lib/components/RDataGrid/index.js',
+      'Section/index': './src/lib/components/Section/index.js',
+      'Tab/index': './src/lib/components/Tab/index.js',
+      'ThemeProvider/index': './src/lib/components/ThemeProvider/index.js',
     };
     config.externals = [
       'react',
       'react-dom',
       'react-file-reader-input',
+      'react-intl',
       'react-router-dom',
       'react-number-format',
       '@date-io/jalaali',
