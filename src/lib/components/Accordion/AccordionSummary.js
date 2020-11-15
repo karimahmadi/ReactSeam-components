@@ -1,18 +1,18 @@
 import React from 'react';
 import MatAccordionSummary from '@material-ui/core/AccordionSummary';
 import PropTypes from 'prop-types';
-import {UpIcon , DownIcon} from "./svg";
+import { MinusIcon, PlusIcon } from './svg';
 
-const AccordionSummary = ({children, id, defaultExpanded, expandIcon, ...other}) => (
-	<MatAccordionSummary id={id} {...other}>
-		{expandIcon && <UpIcon/> }
-		{!expandIcon && <DownIcon/> }
-		{children}
-	</MatAccordionSummary>
+const AccordionSummary = ({ children, expandIcon, ...other }) => (
+  <MatAccordionSummary {...other}>
+    {expandIcon && <MinusIcon />}
+    {!expandIcon && <PlusIcon />}
+    {children}
+  </MatAccordionSummary>
 );
 
 AccordionSummary.propTypes = {
-	children: PropTypes.any,
-	id: PropTypes.string.isRequired,
+  children: PropTypes.any,
+  expandIcon: PropTypes.bool,
 };
-export {AccordionSummary};
+export { AccordionSummary };
