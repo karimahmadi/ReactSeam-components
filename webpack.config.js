@@ -104,13 +104,9 @@ const config = {
           filter: async resourcePath => {
             if (
               new RegExp(
-                [
-                  'InputText',
-                  'Label',
-                  'LoadingIndicator',
-                  'MainContainer',
-                  'MainSection',
-                ].join('|'),
+                ['InputText', 'Label', 'MainContainer', 'MainSection'].join(
+                  '|',
+                ),
               ).test(resourcePath)
             ) {
               return false;
@@ -151,6 +147,8 @@ module.exports = (env, argv) => {
       'Input/index': './src/lib/components/Input/index.js',
       'InputLabel/index': './src/lib/components/InputLabel/index.js',
       'Layout/index': './src/lib/components/Layout/index.js',
+      'LoadingIndicator/index':
+        './src/lib/components/LoadingIndicator/index.js',
       'Modal/index': './src/lib/components/Modal/index.js',
       'NumberInput/index': './src/lib/components/NumberInput/index.js',
       'RDataGrid/index': './src/lib/components/RDataGrid/index.js',
