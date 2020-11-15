@@ -100,7 +100,7 @@ function CodeCombo({
         native
         value={code}
         onChange={handleChange}
-        input={<Input />}
+        input={<Input skip />}
         ratio={getRatio(ratio, 1)}
         disabled={disabled}
       >

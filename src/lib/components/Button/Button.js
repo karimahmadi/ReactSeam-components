@@ -2,48 +2,24 @@ import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Button as MatButton } from '@material-ui/core';
 
-function Button({
-  disabled,
-  fullWidth,
-  disableFocusRipple,
-  disableRipple,
-  size,
-  className,
-  variant,
-  color,
-  startIcon,
-  endIcon,
-  children,
-  onClick,
-  skip,
-  href,
-  dispatch,
-  ADD_TO_REF_LIST,
-}) {
+function Button({ skip, dispatch, ADD_TO_REF_LIST, tabindex, ...others }) {
   const buttonRef = useRef(null);
+
+  const { disabled, children } = others;
+
   useEffect(() => {
     if (!skip && !disabled && dispatch)
-      dispatch({ type: ADD_TO_REF_LIST, payload: buttonRef });
-  }, [buttonRef, skip, disabled]);
-  function handleClick(e) {
-    if (typeof onClick === 'function') onClick(e);
-  }
+      dispatch({
+        type: ADD_TO_REF_LIST,
+        payload: buttonRef,
+        tabindex,
+        skip,
+        disabled,
+      });
+  }, [buttonRef, tabindex, skip, disabled]);
+
   return (
-    <MatButton
-      disabled={disabled}
-      fullWidth={fullWidth}
-      disableFocusRipple={disableFocusRipple}
-      disableRipple={disableRipple}
-      size={size}
-      className={className}
-      onClick={handleClick}
-      variant={variant}
-      color={color}
-      startIcon={startIcon}
-      endIcon={endIcon}
-      ref={buttonRef}
-      href={href}
-    >
+    <MatButton {...others} ref={buttonRef}>
       {children}
     </MatButton>
   );
@@ -66,6 +42,7 @@ Button.propTypes = {
   dispatch: PropTypes.func,
   ADD_TO_REF_LIST: PropTypes.any,
   href: PropTypes.string,
+  tabindex: PropTypes.number,
 };
 
 export default Button;

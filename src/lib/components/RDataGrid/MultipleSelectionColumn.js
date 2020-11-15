@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import Checkbox from '../Checkbox';
+import { Checkbox } from '../Checkbox';
 
 const MultipleSelectionColumn = ({ data, checkedKeys, onChange }) => {
   const [selectAllChecked, setSelectAllChecked] = useState(false);
