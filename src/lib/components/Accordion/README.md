@@ -1,6 +1,6 @@
 ```$xslt
-<Accordion square expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-	<AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
+<Accordion square defaultExpanded expanded={expanded === 'panel2'} onChange={handleIconChange}>
+	<AccordionSummary expandIcon={icon} aria-controls="panel2d-content" id="panel2d-header">
 		<div>Collapsible Group Item #2</div>
 	</AccordionSummary>
 	<AccordionDetails>
