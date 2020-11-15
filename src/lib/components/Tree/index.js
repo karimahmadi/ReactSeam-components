@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable array-callback-return */
 /* eslint-disable consistent-return */
 /* eslint-disable no-lonely-if */
@@ -16,14 +17,26 @@ import 'rsuite-table/dist/css/rsuite-table.css'; // or 'rsuite-table/dist/css/rs
 import lodash from 'lodash/array';
 import Checkbox from '../Checkbox';
 import LoadingIndicator from '../LoadingIndicator';
-import './style.css';
+import TreeGlobalStyles from './TreeGlobalStyles';
+import ExteraIconPlaceholder from './ExteraIconPlaceholder';
+import ToggleIconCollapsed from './ToggleIconCollapsed';
+import ToggleIconExpanded from './TogggleIconExpanded';
 function Tree({
   data,
   onNodeExpand,
   rowKeyColumn,
   isChildLoading,
   partialLoadData,
+  selectionMode = 'single',
+  onRowClick,
+  onRowSingleSelection,
   isRTL = true,
+  selectionColor = '#CCC',
+  unknownParents,
+  expandToggleIcon,
+  collapseToggleIcon,
+  parentIcon,
+  childIcon,
 }) {
   useEffect(() => {
     if (data) {
@@ -32,7 +45,7 @@ function Tree({
     }
   }, [data]);
   useEffect(() => {
-    if (lastExpandedNode) {
+    if (lastExpandedNode && Array.isArray(partialLoadData)) {
       const columnKeyAddedData = prepareNotAttachedData(
         partialLoadData,
         lastExpandedNode[TREE_KEY_COLUMN],
@@ -41,10 +54,17 @@ function Tree({
         setTreeInputData([
           ...appendExpandedNode(
             treeInputData,
-            generateNodeId(lastExpandedNode),
+            generateTreeKeyColumn(lastExpandedNode),
             columnKeyAddedData,
           ),
         ]);
+    } else if (lastExpandedNode && !Array.isArray(partialLoadData)) {
+      setTreeInputData([
+        ...removeToggleIndicator(
+          treeInputData,
+          generateTreeKeyColumn(lastExpandedNode),
+        ),
+      ]);
     }
   }, [partialLoadData]);
   useEffect(() => {
@@ -82,6 +102,8 @@ function Tree({
   const [loadingTree, setLoadingTree] = useState(true);
 
   const [selectionList, setSelectionList] = useState([]);
+
+  const [selectedRowRef, setSelectedRowRef] = useState();
 
   const handleExpandChange = (isOpen, rowData) => {
     if (isOpen) {
@@ -145,6 +167,16 @@ function Tree({
         );
       } else unCheckChild(selectionResult);
     }
+  };
+  const handleRowClick = (rowData, e) => {
+    if (typeof onRowClick === 'function') onRowClick(rowData, e);
+    // eslint-disable-next-line no-restricted-syntax
+    if (selectedRowRef)
+      selectedRowRef.classList.remove('rs-table-row-selection');
+    setSelectedRowRef(e.currentTarget);
+    e.currentTarget.classList.add('rs-table-row-selection');
+    if (typeof onRowSingleSelection === 'function')
+      onRowSingleSelection(rowData[TREE_KEY_COLUMN]);
   };
   const checkChild = selectedIds => {
     setSelectionList(lodash.uniq([...selectionList, ...selectedIds]));
@@ -223,24 +255,43 @@ function Tree({
       item[TREE_KEY_COLUMN] = generateTreeKeyColumn(item);
       if (item.children && item.children.length > 0) {
         prepareData(item.children);
+      } else if (unknownParents && !item.children) {
+        item.children = [];
       }
     });
     return allTreeNodesData;
   };
   const prepareNotAttachedData = (allTreeNodesData, parentTreeKeyColumn) => {
     allTreeNodesData.map(item => {
+      if (unknownParents) item.children = [];
       item[TREE_KEY_COLUMN] = `${parentTreeKeyColumn}/${item[rowKeyColumn]}`;
     });
     return allTreeNodesData;
   };
-  const appendExpandedNode = (treeData, childNodeId, newExpandedNode) => {
+  const appendExpandedNode = (treeData, nodeTreeKeyColumn, newExpandedNode) => {
     treeData.map(treeNode => {
-      if (generateNodeId(treeNode) === childNodeId) {
+      if (generateTreeKeyColumn(treeNode) === nodeTreeKeyColumn) {
         treeNode.children = newExpandedNode;
         return treeNode;
       }
       if (treeNode.children && treeNode.children.length > 0) {
-        appendExpandedNode(treeNode.children, childNodeId, newExpandedNode);
+        appendExpandedNode(
+          treeNode.children,
+          nodeTreeKeyColumn,
+          newExpandedNode,
+        );
+      }
+    });
+    return treeData;
+  };
+  const removeToggleIndicator = (treeData, nodeTreeKeyColumn) => {
+    treeData.map(treeNode => {
+      if (generateTreeKeyColumn(treeNode) === nodeTreeKeyColumn) {
+        treeNode.children = undefined;
+        return treeNode;
+      }
+      if (treeNode.children && treeNode.children.length > 0) {
+        removeToggleIndicator(treeNode.children, nodeTreeKeyColumn);
       }
     });
     return treeData;
@@ -252,18 +303,9 @@ function Tree({
     }
     return nodeId;
   };
-  const generateNodeId = node => {
-    let nodeId = node[rowKeyColumn];
-    let nodeParentIdList;
-    if (node._parent) {
-      nodeParentIdList = convertNode2Id(node._parent);
-      nodeId = `${nodeParentIdList.join('/')}/${nodeId}`;
-    }
-    return nodeId;
-  };
   const showToggleWithDirection = isRightToLeft => {
-    if (isRightToLeft) return <i className="icon-chevron-left2" />;
-    return <i className="icon-chevron-right2" />;
+    if (isRightToLeft) return collapseToggleIcon || <ToggleIconCollapsed />;
+    return collapseToggleIcon || <ToggleIconCollapsed />;
   };
   const showExpandIndicator = rowKeyData => {
     if (loadingNode === rowKeyData)
@@ -278,7 +320,7 @@ function Tree({
         </div>
       );
     if (expandedNodeList.indexOf(rowKeyData) !== -1)
-      return <i className="icon-chevron-down2" />;
+      return expandToggleIcon || <ToggleIconExpanded />;
     return showToggleWithDirection(isRTL);
   };
   const showCheckbox = (treeKeyColumn, parent, children) => {
@@ -301,39 +343,46 @@ function Tree({
       />
     );
   };
+  const showExtraIcon = nodeChildren => {
+    if (nodeChildren && parentIcon) return parentIcon;
+    if (!nodeChildren && childIcon) return childIcon;
+  };
   return loadingTree ? (
     <LoadingIndicator width={100} height={100} />
   ) : (
-    <RsuiteTree
-      data={treeInputData}
-      isTree
-      rtl={isRTL}
-      onExpandChange={handleExpandChange}
-      rowKey={TREE_KEY_COLUMN}
-      showHeader={false}
-      bordered={false}
-      renderTreeToggle={(icon, rowData) =>
-        showExpandIndicator(rowData[TREE_KEY_COLUMN])
-      }
-      autoHeight
-    >
-      <Column width={500} flexGrow={1} treeCol>
-        <HeaderCell />
-        <Cell hasChildren dataKey="value">
-          {rowData => (
-            <Fragment>
-              {showCheckbox(
-                rowData[TREE_KEY_COLUMN],
-                // eslint-disable-next-line no-underscore-dangle
-                rowData._parent,
-                rowData.children,
-              )}
-              {rowData.value}
-            </Fragment>
-          )}
-        </Cell>
-      </Column>
-    </RsuiteTree>
+    <Fragment>
+      <TreeGlobalStyles selectionColor={selectionColor} />
+      <RsuiteTree
+        data={treeInputData}
+        isTree
+        rtl={isRTL}
+        onExpandChange={handleExpandChange}
+        rowKey={TREE_KEY_COLUMN}
+        showHeader={false}
+        bordered={false}
+        onRowClick={handleRowClick}
+        renderTreeToggle={(icon, rowData) =>
+          showExpandIndicator(rowData[TREE_KEY_COLUMN])
+        }
+        autoHeight
+      >
+        <Column width={500} flexGrow={1} treeCol>
+          <HeaderCell />
+          <Cell dataKey="value">
+            {rowData => (
+              <Fragment>
+                {selectionMode === 'multiple'
+                  ? showCheckbox(rowData[TREE_KEY_COLUMN], rowData._parent, rowData.children,) : ''}
+                <ExteraIconPlaceholder>
+                  {showExtraIcon(rowData.children)}
+                </ExteraIconPlaceholder>
+                <span>{rowData.value}</span>
+              </Fragment>
+            )}
+          </Cell>
+        </Column>
+      </RsuiteTree>
+    </Fragment>
   );
 }
 Tree.propTypes = {
@@ -343,6 +392,15 @@ Tree.propTypes = {
   isChildLoading: PropTypes.bool,
   isRTL: PropTypes.bool,
   partialLoadData: PropTypes.any,
+  selectionMode: PropTypes.string,
+  onRowClick: PropTypes.func,
+  onRowSingleSelection: PropTypes.func,
+  selectionColor: PropTypes.string,
+  unknownParents: PropTypes.bool,
+  expandToggleIcon: PropTypes.node,
+  collapseToggleIcon: PropTypes.node,
+  parentIcon: PropTypes.node,
+  childIcon: PropTypes.node,
 };
 
 export default Tree;
