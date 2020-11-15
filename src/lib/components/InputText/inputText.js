@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { ComponentContext } from '../index';
 
 const useStyles = makeStyles({
   root: {
@@ -40,12 +39,10 @@ function InputText({
   ADD_TO_REF_LIST,
   ADD_REF_TO_FOCUS,
 }) {
-
-	const inputRef = useRef(null);
+  const inputRef = useRef(null);
 
   useEffect(() => {
-    if (!skip && !disabled && !readOnly && dispatch)
-      dispatch({ type: ADD_TO_REF_LIST, payload: inputRef });
+    if (dispatch) dispatch({ type: ADD_TO_REF_LIST, payload: inputRef });
   }, [inputRef, skip, disabled, readOnly]);
 
   const styles = useStyles();

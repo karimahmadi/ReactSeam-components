@@ -2,11 +2,10 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import numeral from 'numeral';
 import arrayUtil from 'lodash';
-
 import PropTypes from 'prop-types';
 import { Table, Column, HeaderCell, Cell, ColumnGroup } from 'rsuite-table';
+import 'rsuite-table/dist/css/rsuite-table.css';
 import DataTableGlobalStyles from './RDataTableStyles';
-import 'rsuite-table/dist/css/rsuite-table.css'; // or 'rsuite-table/dist/css/rsuite-table.css'
 import Footer from './Footer';
 import MultipleSelectionColumn from './MultipleSelectionColumn';
 import CheckCell from './CheckCell';

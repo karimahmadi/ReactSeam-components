@@ -99,10 +99,8 @@ const config = {
         },
         { from: 'src/lib/README.md', to: 'README.md' },
         {
-          from: 'src/lib/components/**/README.md',
-          transformPath(targetPath) {
-            return targetPath.replace('src/lib/components/', '');
-          },
+          context: 'src/lib/components/',
+          from: '**/README.md',
           filter: async resourcePath => {
             if (
               new RegExp(
@@ -149,7 +147,7 @@ module.exports = (env, argv) => {
       'DownLoadFile/index': './src/lib/components/DownLoadFile/index.js',
       'FileUpload/index': './src/lib/components/FileUpload/index.js',
       'Grid/index': './src/lib/components/Grid/index.js',
-      'Group/index': './src/lib/components/Group/index.js',
+      'FocusManager/index': './src/lib/components/FocusManager/index.js',
       'Input/index': './src/lib/components/Input/index.js',
       'InputLabel/index': './src/lib/components/InputLabel/index.js',
       'Layout/index': './src/lib/components/Layout/index.js',

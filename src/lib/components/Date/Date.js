@@ -149,6 +149,8 @@ function Date(props) {
       disabled={props.disabled}
       readOnly={props.readOnly}
       required={props.required}
+      skip={props.skip}
+      tabindex={props.tabindex}
     />
   );
 }
@@ -162,6 +164,8 @@ Date.propTypes = {
   disabled: PropTypes.bool,
   readOnly: PropTypes.bool,
   required: PropTypes.bool,
+  skip: PropTypes.bool,
+  tabindex: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default Date;

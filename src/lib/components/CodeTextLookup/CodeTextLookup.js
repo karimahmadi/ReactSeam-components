@@ -28,7 +28,8 @@ function CodeTextLookup({
   onFocus,
   hidebutton = false,
   required = false,
-  inputRef,
+  skip,
+  tabindex,
 }) {
   const [code, setCode] = useState(value[propertyCode] || '');
   const [title, setTitle] = useState(value[propertyTitle] || '');
@@ -60,17 +61,20 @@ function CodeTextLookup({
         onKeyPress={onKeyPress}
         onBlur={onBlur}
         onFocus={onFocus}
-        inputRef={inputRef}
+        skip={skip}
+        tabindex={tabindex}
       />
       <TitleInput ratio={getRatio(ratio, 1)} value={title} readOnly disabled />
-      <CodeTextButton
-        variant="contained"
-        onClick={onClick}
-        disabled={disabled}
-        hidebutton={hidebutton ? 'hide' : 'show'}
-      >
-        ...
-      </CodeTextButton>
+      {!hidebutton && (
+        <CodeTextButton
+          skip
+          variant="contained"
+          onClick={onClick}
+          disabled={disabled}
+        >
+          ...
+        </CodeTextButton>
+      )}
       {required && <Asteriks>*</Asteriks>}
     </ContainerControl>
   );
@@ -92,7 +96,8 @@ CodeTextLookup.propTypes = {
   onFocus: PropTypes.func,
   hidebutton: PropTypes.bool,
   required: PropTypes.bool,
-  inputRef: PropTypes.object,
+  skip: PropTypes.bool,
+  tabindex: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default CodeTextLookup;
