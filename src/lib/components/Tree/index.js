@@ -15,7 +15,7 @@ import PropTypes from 'prop-types';
 import { Table as RsuiteTree, Column, HeaderCell, Cell } from 'rsuite-table';
 import 'rsuite-table/dist/css/rsuite-table.css'; // or 'rsuite-table/dist/css/rsuite-table.css'
 import lodash from 'lodash/array';
-import Checkbox from '../Checkbox';
+import { Checkbox } from '../Checkbox';
 import LoadingIndicator from '../LoadingIndicator';
 import TreeGlobalStyles from './TreeGlobalStyles';
 import ExteraIconPlaceholder from './ExteraIconPlaceholder';
