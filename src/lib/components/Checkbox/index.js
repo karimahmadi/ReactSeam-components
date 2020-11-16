@@ -1,5 +1,4 @@
-import Checkbox from './Checkbox';
-import withChangeFocus from '../Group/withChangeFocus';
-const CheckboxWithChangeFocus = props => withChangeFocus(Checkbox)(props);
-export { CheckboxWithChangeFocus };
-export default Checkbox;
+import CheckboxBase from './Checkbox';
+import withChangeFocus from '../FocusManager/withChangeFocus';
+
+export const Checkbox = withChangeFocus(CheckboxBase);

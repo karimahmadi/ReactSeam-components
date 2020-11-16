@@ -1,5 +1,10 @@
+### latest version : [0.2.4]
+## changes 
+- Renamed Group component to FocusManager
+- The FocusManager can move focus from one input to another control using Enter Key and move focus from one button to another control using Left or Right Arrow keys
+-    
 
-### latest version : [0.2.3]
+### [0.2.3]
 ## changes
 - removed style (lineHeight: 'initial') from Section component
 

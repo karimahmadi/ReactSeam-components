@@ -1,8 +1,8 @@
 import { styled, withTheme } from '@material-ui/core/styles';
-import { Button as MuiButton } from '@material-ui/core';
-import withChangeFocus from '../Group/withChangeFocus';
+import ButtonBase from './Button';
+import withChangeFocus from '../FocusManager/withChangeFocus';
 
-export const Button = styled(withTheme(MuiButton))(props => ({
+export const Button = styled(withTheme(withChangeFocus(ButtonBase)))(props => ({
   background: props.theme.palette.grey[200],
   borderRadius: props.theme.typography.button.borderRadius,
   border: props.theme.typography.button.border,
@@ -17,6 +17,3 @@ export const Button = styled(withTheme(MuiButton))(props => ({
     border: props.theme.typography.button.hoverBorder,
   },
 }));
-
-const ButtontWithChangeFocus = props => withChangeFocus(Button)(props);
-export { ButtontWithChangeFocus };

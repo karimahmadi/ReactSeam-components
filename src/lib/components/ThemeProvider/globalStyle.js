@@ -5,7 +5,6 @@ import BTitrBold from './fonts/BTitrBold.ttf';
 import BNazanin from './fonts/BNazanin.ttf';
 
 const GlobalStyle = createGlobalStyle`
-
 * {
 	box-sizing: border-box;
 }

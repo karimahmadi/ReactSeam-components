@@ -8,7 +8,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
 import FormControlLabel from '@material-ui/core/FormControlLabel/FormControlLabel';
-import Checkbox from '../Checkbox';
+import { Checkbox } from '../Checkbox';
 
 function CheckboxGroup({
   items,
