@@ -1,8 +1,8 @@
 ### latest version : [0.2.4]
 ## changes 
-- Renamed Group component to FocusManager
-- The FocusManager can move focus from one input to another control using Enter Key and move focus from one button to another control using Left or Right Arrow keys
--    
+- Renamed Group component to FocusManager: The FocusManager can move focus from one input to another control using Enter Key and move focus from one button to another control using Left or Right Arrow keys
+- Change Accordion component : changes are add icon for expand/collapse and showIcon property
+- Add Tree component    
 
 ### [0.2.3]
 ## changes
