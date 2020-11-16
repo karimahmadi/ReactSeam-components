@@ -159,6 +159,7 @@ module.exports = (env, argv) => {
       'Section/index': './src/lib/components/Section/index.js',
       'Tab/index': './src/lib/components/Tab/index.js',
       'ThemeProvider/index': './src/lib/components/ThemeProvider/index.js',
+      'Tree/index': './src/lib/components/Tree/index.js',
     };
     config.externals = [
       'react',
