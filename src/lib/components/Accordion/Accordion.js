@@ -10,7 +10,9 @@ import PropTypes from 'prop-types';
 import { AccordionContext } from './AccordionContext';
 
 function Accordion({ children, defaultExpanded, showIcon = true, ...other }) {
-  const [expandIcon, setExpandIcon] = useState(defaultExpanded);
+  const [expandIcon, setExpandIcon] = useState(
+    other.expanded || defaultExpanded,
+  );
   const handleOnChange = (e, expanded) => {
     setExpandIcon(expanded);
   };
