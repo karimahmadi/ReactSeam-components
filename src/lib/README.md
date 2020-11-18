@@ -2,7 +2,8 @@
 
 ## Latest version : [0.2.5] - 11/18/2020
 ### Fixed
-- TabControl render problem  has been fixed
+- TabControl render problem  
+- Accordion onChange event problem
  
 ## [0.2.4]
 ### Added
