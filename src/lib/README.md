@@ -4,7 +4,10 @@
 ### Fixed
 - TabControl render problem  
 - Accordion onChange event problem
- 
+###Changed
+- default line-height changed to 1.5 in ThemeProvider globalStyle (body)
+- Section header margin changed
+
 ## [0.2.4]
 ### Added
 - Add Tree component
