@@ -9,12 +9,19 @@ import MatAccordion from '@material-ui/core/Accordion';
 import PropTypes from 'prop-types';
 import { AccordionContext } from './AccordionContext';
 
-function Accordion({ children, defaultExpanded, showIcon = true, ...other }) {
+function Accordion({
+  children,
+  defaultExpanded,
+  showIcon = true,
+  onChange,
+  ...other
+}) {
   const [expandIcon, setExpandIcon] = useState(
     other.expanded || defaultExpanded,
   );
   const handleOnChange = (e, expanded) => {
     setExpandIcon(expanded);
+    if (onChange) onChange(e, expanded);
   };
 
   return (
@@ -34,6 +41,7 @@ Accordion.propTypes = {
   children: PropTypes.any,
   defaultExpanded: PropTypes.bool,
   showIcon: PropTypes.bool,
+  onChange: PropTypes.func,
 };
 
 export default Accordion;
