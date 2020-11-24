@@ -147,7 +147,7 @@ const RDataGrid = ({
       );
     }
     inputColumnChildren.forEach(inputColumnChild => {
-      if (inputColumnChild.type.name === 'DataGridColumnGroup') {
+      if (inputColumnChild.type.name === 'RDataGridColumnGroup') {
         result.push(columnGroup(inputColumnChild));
       }
       result.push(displayColumnHeaderAndCell(inputColumnChild));
@@ -234,13 +234,14 @@ const RDataGrid = ({
       insideColumnHeader = renderHeaderCellChildren( inputColumnChildren.props.headerName, inputColumnChildren.props.renderHeaderCellChildren,);
     else
       insideColumnHeader = header(inputColumnChildren.props.headerName);
+
     if(typeof inputColumnChildren.props.renderCellChildren === 'function')
       insideColumnCell = renderCellChildren(
         inputColumnChildren.props.headerName,
         inputColumnChildren.props.colSpan,
         inputColumnChildren.props.renderCellChildren,)
     else if (!inputColumnChildren.props.type)
-      insideColumnCell = cell(inputColumnChildren.props.headerName,inputColumnChildren.props.colSpan,);
+      insideColumnCell = cell(inputColumnChildren.props.headerName, inputColumnChildren.props.colSpan,);
     return (
       <Column
         resizable={inputColumnChildren.props.resizable}
@@ -248,6 +249,7 @@ const RDataGrid = ({
         fixed={inputColumnChildren.props.fixed}
         align={inputColumnChildren.props.align}
         width={inputColumnChildren.props.width}
+        flexGrow={inputColumnChildren.props.flexGrow}
       >
         {insideColumnHeader}{insideColumnCell}
       </Column>
@@ -279,7 +281,7 @@ const RDataGrid = ({
         // rownumbers={rownumbers}
         data={data}
         // rowSelection={rowSelection}
-        // defaultColDef={defaultColDef}
+        // defaultColDef = {defaultColDef}
         rtl={rtl}
         loading={loading}
         onSortColumn={handleSortColumn}

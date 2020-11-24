@@ -43,6 +43,90 @@ const TestSection = () => {
       holidaytype: 'تعطیلات هفتگی',
       desc: '',
     },
+    {
+      date: '1398/11/09',
+      dayofweek: 'جمعه',
+      holidaytype: 'تعطیلات هفتگی',
+      desc: '',
+    },
+    {
+      date: '1398/11/16',
+      dayofweek: 'جمعه',
+      holidaytype: 'تعطیلات هفتگی',
+      desc: '',
+    },
+    {
+      date: '1398/11/09',
+      dayofweek: 'جمعه',
+      holidaytype: 'تعطیلات هفتگی',
+      desc: '',
+    },
+    {
+      date: '1398/11/16',
+      dayofweek: 'جمعه',
+      holidaytype: 'تعطیلات هفتگی',
+      desc: '',
+    },
+    {
+      date: '1398/11/09',
+      dayofweek: 'جمعه',
+      holidaytype: 'تعطیلات هفتگی',
+      desc: '',
+    },
+    {
+      date: '1398/11/16',
+      dayofweek: 'جمعه',
+      holidaytype: 'تعطیلات هفتگی',
+      desc: '',
+    },
+    {
+      date: '1398/11/09',
+      dayofweek: 'جمعه',
+      holidaytype: 'تعطیلات هفتگی',
+      desc: '',
+    },
+    {
+      date: '1398/11/16',
+      dayofweek: 'جمعه',
+      holidaytype: 'تعطیلات هفتگی',
+      desc: '',
+    },
+    {
+      date: '1398/11/09',
+      dayofweek: 'جمعه',
+      holidaytype: 'تعطیلات هفتگی',
+      desc: '',
+    },
+    {
+      date: '1398/11/16',
+      dayofweek: 'جمعه',
+      holidaytype: 'تعطیلات هفتگی',
+      desc: '',
+    },
+    {
+      date: '1398/11/09',
+      dayofweek: 'جمعه',
+      holidaytype: 'تعطیلات هفتگی',
+      desc: '',
+    },
+    {
+      date: '1398/11/16',
+      dayofweek: 'جمعه',
+      holidaytype: 'تعطیلات هفتگی',
+      desc: '',
+    },
+    {
+      date: '1398/11/09',
+      dayofweek: 'جمعه',
+      holidaytype: 'تعطیلات هفتگی',
+      desc: '',
+    },
+    {
+      date: '1398/11/16',
+      dayofweek: 'جمعه',
+      holidaytype: 'تعطیلات هفتگی',
+      desc: '',
+    },
   ];
 
   const rows = useData();
