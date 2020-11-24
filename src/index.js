@@ -10,6 +10,7 @@ import { Date } from './lib/components/Date';
 import { Button } from './lib/components/Button';
 import { DataTable } from './lib/components/DataTable';
 import { Grid } from './lib/components/Grid';
+import { TejaratLoading } from './lib/components/Modal/TejaratLoading';
 
 const TestSection = () => {
   const useData = () => [
@@ -213,6 +214,7 @@ const TestSection = () => {
           </Grid>
         </Grid>
       </Section>
+      <TejaratLoading />
     </Fragment>
   );
 };
