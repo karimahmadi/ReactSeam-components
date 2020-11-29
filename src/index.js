@@ -10,7 +10,7 @@ import { Date } from './lib/components/Date';
 import { Button } from './lib/components/Button';
 import { DataTable } from './lib/components/DataTable';
 import { Grid } from './lib/components/Grid';
-import { TejaratLoading } from './lib/components/Modal/TejaratLoading';
+import { LoadingProvider, useLoading } from './lib/components/TejaratLoading';
 
 const TestSection = () => {
   const useData = () => [
@@ -169,6 +169,23 @@ const TestSection = () => {
     },
   ];
 
+  const { loading } = useLoading();
+
+  const handleRetrive = () => {
+    loading(true);
+    loading(true);
+    loading(true);
+    setTimeout(() => {
+      loading(false);
+    }, 5000);
+    setTimeout(() => {
+      loading(false);
+    }, 1000);
+    setTimeout(() => {
+      loading(false);
+    }, 2000);
+  };
+
   return (
     <Fragment>
       <Section title="تقویم تعطیلات سامانه چکاوک">
@@ -197,7 +214,7 @@ const TestSection = () => {
         <Grid container spacing={1}>
           <Grid item lg={12} md={12} sm={12} xs={12}>
             <ButtonGroup variant="text">
-              <Button>بازیابی</Button>
+              <Button onClick={handleRetrive}>بازیابی</Button>
               <Button>ایجاد گروهی</Button>
               <Button>ایجاد موردی</Button>
               <Button>ایجاد سالانه شمسی</Button>
@@ -214,7 +231,6 @@ const TestSection = () => {
           </Grid>
         </Grid>
       </Section>
-      <TejaratLoading />
     </Fragment>
   );
 };
@@ -226,8 +242,10 @@ const App = () => (
 );
 
 render(
-  <ModalProvider>
-    <App />
-  </ModalProvider>,
+  <LoadingProvider>
+    <ModalProvider>
+      <App />
+    </ModalProvider>
+  </LoadingProvider>,
   document.getElementById('root'),
 );

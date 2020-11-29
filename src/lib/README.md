@@ -1,6 +1,9 @@
 # Changelog
+## Latest version : [0.2.6] - 11/29/2020
+### Added
+- TejaratLoading component to show progress  
 
-## Latest version : [0.2.5] - 11/18/2020
+## [0.2.5] - 11/18/2020
 ### Fixed
 - TabControl render problem  
 - Accordion onChange event problem
