@@ -1,11 +1,9 @@
 import React, { Fragment } from 'react';
-import { render } from 'react-dom';
+import PropTypes from 'prop-types';
 import ButtonGroup from '@material-ui/core/ButtonGroup/ButtonGroup';
 import 'rc-easyui/dist/themes/default/easyui.css';
 import 'rc-easyui/dist/themes/react.css';
-import { ModalProvider } from './lib/components/Modal';
 import { Section } from './lib/components/Section';
-import { ThemeProvider } from './lib/components/ThemeProvider';
 import { InputLabel as Label } from './lib/components/InputLabel';
 import { Date } from './lib/components/Date';
 import { Button } from './lib/components/Button';
@@ -14,7 +12,7 @@ import { CodeTextLookup } from './lib/components/CodeTextLookup';
 import { CodeCombo } from './lib/components/CodeCombo';
 import { Grid } from './lib/components/Grid';
 
-const TestSection = () => {
+const TestSection = ({ confirm, cancel }) => {
   const useData = () => [
     {
       date: '1398/10/18',
@@ -66,7 +64,7 @@ const TestSection = () => {
           <Grid item lg={3} md={3} sm={3} xs={3}>
             <CodeTextLookup ratio="1:1" hidebutton />
           </Grid>
-          <Grid item lg={2} md={2} sm={2} xs={2}></Grid>
+          <Grid item lg={2} md={2} sm={2} xs={2} />
 
           <Grid item lg={2} md={2} sm={2} xs={2} left>
             <Label>تاریخ شروع اعتبار از:</Label>
@@ -84,7 +82,7 @@ const TestSection = () => {
             <Label>تا:</Label>
             <Date />
           </Grid>
-          <Grid item lg={2} md={2} sm={2} xs={2} left></Grid>
+          <Grid item lg={2} md={2} sm={2} xs={2} left />
 
           <Grid item lg={2} md={2} sm={2} xs={2} left>
             <Label>وضعیت:</Label>
@@ -120,21 +118,21 @@ const TestSection = () => {
               <DataGridColumn title="توضیحات" field="desc" align="right" />
             </DataGrid>
           </Grid>
+          <Grid item lg={12} md={12} sm={12} xs={12} left>
+            <ButtonGroup variant="text">
+              <Button onClick={confirm}>تایید</Button>
+              <Button onClick={cancel}>انصراف</Button>
+            </ButtonGroup>
+          </Grid>
         </Grid>
       </Section>
     </Fragment>
   );
 };
 
-const App = () => (
-  <ThemeProvider>
-    <TestSection />
-  </ThemeProvider>
-);
+TestSection.propTypes = {
+  confirm: PropTypes.func,
+  cancel: PropTypes.func,
+};
 
-render(
-  <ModalProvider>
-    <App />
-  </ModalProvider>,
-  document.getElementById('root'),
-);
+export default TestSection;

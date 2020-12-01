@@ -21,3 +21,26 @@ function App() {
 export default App;
 
 ```
+
+```ecmascript 6
+ const { openModal } = useModal();
+openModal(options)
+```
+
+### options
+
+- Component  : react component
+- ComponentProps : object  
+- fullScreen : boolean 
+- fullWidth : boolean
+- maxWidth : 'lg' | 'md' | 'sm' | 'xl' | 'xs' | false
+- title : string 
+- disableBackdropClick: boolean
+- disableEscapeKeyDown: boolean     
+- onClose : event
+- onConfirm : event
+- onCancel : event
+
+
+
+

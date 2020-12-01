@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { render } from 'react-dom';
 import ButtonGroup from '@material-ui/core/ButtonGroup/ButtonGroup';
-import { ModalProvider } from './lib/components/Modal';
+import { ModalProvider, useModal } from './lib/components/Modal';
 import { Section } from './lib/components/Section';
 import { ThemeProvider } from './lib/components/ThemeProvider';
 import { InputLabel as Label } from './lib/components/InputLabel';
@@ -10,7 +10,7 @@ import { Date } from './lib/components/Date';
 import { Button } from './lib/components/Button';
 import { DataTable } from './lib/components/DataTable';
 import { Grid } from './lib/components/Grid';
-import { LoadingProvider, useLoading } from './lib/components/TejaratLoading';
+import Page2 from './page2';
 
 const TestSection = () => {
   const useData = () => [
@@ -169,21 +169,30 @@ const TestSection = () => {
     },
   ];
 
-  const { loading } = useLoading();
+  const { openModal } = useModal();
+
+  const handleConfirm = () => {
+    // confirm clicked
+  };
+  const handleCancel = () => {
+    // cancel clicked
+  };
+  const handleClose = () => {
+    // modal closed
+  };
 
   const handleRetrive = () => {
-    loading(true);
-    loading(true);
-    loading(true);
-    setTimeout(() => {
-      loading(false);
-    }, 5000);
-    setTimeout(() => {
-      loading(false);
-    }, 1000);
-    setTimeout(() => {
-      loading(false);
-    }, 2000);
+    openModal({
+      Component: Page2,
+      fullWidth: true,
+      maxWidth: 'sm',
+      title: 'عنوان فرم',
+      disableBackdropClick: true,
+      disableEscapeKeyDown: true,
+      onConfirm: handleConfirm,
+      onCancel: handleCancel,
+      onClose: handleClose,
+    });
   };
 
   return (
@@ -242,10 +251,8 @@ const App = () => (
 );
 
 render(
-  <LoadingProvider>
-    <ModalProvider>
-      <App />
-    </ModalProvider>
-  </LoadingProvider>,
+  <ModalProvider>
+    <App />
+  </ModalProvider>,
   document.getElementById('root'),
 );
