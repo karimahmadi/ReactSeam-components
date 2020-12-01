@@ -1,7 +1,10 @@
 # Changelog
-## Latest version : [0.2.6] - 11/29/2020
+## Latest version : [0.2.6] - 12/01/2020
 ### Added
 - TejaratLoading component to show progress  
+
+### Changed
+- add README for openModal action of Modal component
 
 ## [0.2.5] - 11/18/2020
 ### Fixed
