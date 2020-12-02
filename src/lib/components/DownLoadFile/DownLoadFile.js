@@ -7,7 +7,7 @@
 import React from 'react';
 import * as axios from 'axios';
 import PropTypes from 'prop-types';
-import Button from '../Button';
+import { Button } from '../Button';
 
 function DownLoadFile({
   children,
@@ -18,6 +18,7 @@ function DownLoadFile({
   fileType = 'application/pdf',
   fileName = 'file.pdf',
   url,
+  ...other
 }) {
   const downLoadFile = () => {
     axios({
@@ -49,7 +50,11 @@ function DownLoadFile({
     });
   };
 
-  return <Button onClick={downLoadFile}>{children}</Button>;
+  return (
+    <Button onClick={downLoadFile} {...other}>
+      {children}
+    </Button>
+  );
 }
 
 DownLoadFile.propTypes = {

@@ -11,6 +11,7 @@ import { Button } from './lib/components/Button';
 import { DataTable } from './lib/components/DataTable';
 import { Grid } from './lib/components/Grid';
 import Page2 from './page2';
+import DownLoadFile from './lib/components/DownLoadFile/DownLoadFile';
 
 const TestSection = () => {
   const useData = () => [
@@ -248,6 +249,14 @@ const TestSection = () => {
               <Button>ایجاد موردی</Button>
               <Button>ایجاد سالانه شمسی</Button>
               <Button>ویرایش موردی</Button>
+              <DownLoadFile
+                url="/rest/lc/report/due/date/pdf/80"
+                authorization={`Bearer ${localStorage.getItem('Auth-Token')}`}
+                responseType="blob"
+                fileType="application/pdf"
+              >
+                open new tab
+              </DownLoadFile>
             </ButtonGroup>
           </Grid>
           <Grid item lg={12} md={12} sm={12} xs={12}>
