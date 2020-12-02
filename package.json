@@ -1,6 +1,6 @@
 {
   "name": "@tatareact/core",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Core components for TaTa react applications",
   "license": "ISC",
   "main": "dist/index.js",
