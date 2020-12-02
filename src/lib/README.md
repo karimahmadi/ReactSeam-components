@@ -1,5 +1,8 @@
 # Changelog
-## Latest version : [0.2.6] - 12/01/2020
+## Latest version : [0.2.6] - 12/02/2020
+### Fixed
+- DownloadFile Button Theme
+
 ### Added
 - TejaratLoading component to show progress  
 
