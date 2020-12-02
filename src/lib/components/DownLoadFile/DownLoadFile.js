@@ -33,28 +33,36 @@ function DownLoadFile({
             Authorization: authorization, // `Bearer ${localStorage.getItem('Auth-Token')}`,
           },
         },
-      }).then(response => {
-        if (response.status === 200) {
-          if (download) {
-            const href = window.URL.createObjectURL(new Blob([response.data]));
-            const link = document.createElement('a');
-            link.href = href;
-            link.setAttribute('download', fileName);
-            document.body.appendChild(link);
-            link.click();
-          } else {
-            // Create a Blob from the PDF Stream
-            const file = new Blob([response.data], { type: fileType });
-            // Build a URL from the file
-            const fileURL = URL.createObjectURL(file);
-            // Open the URL on new Window
-            const pdfWindow = window.open();
-            pdfWindow.location.href = fileURL;
+      })
+        .then(response => {
+          if (response.status === 200) {
+            if (download) {
+              const href = window.URL.createObjectURL(
+                new Blob([response.data]),
+              );
+              const link = document.createElement('a');
+              link.href = href;
+              link.setAttribute('download', fileName);
+              document.body.appendChild(link);
+              link.click();
+            } else {
+              // Create a Blob from the PDF Stream
+              const file = new Blob([response.data], { type: fileType });
+              // Build a URL from the file
+              const fileURL = URL.createObjectURL(file);
+              // Open the URL on new Window
+              const pdfWindow = window.open();
+              pdfWindow.location.href = fileURL;
+            }
+          } else if (onError) {
+            onError(response);
           }
-        } else if (onError) {
-          onError(response);
-        }
-      });
+        })
+        .catch(err => {
+          if (onError) {
+            onError(err);
+          }
+        });
     }
   };
 
