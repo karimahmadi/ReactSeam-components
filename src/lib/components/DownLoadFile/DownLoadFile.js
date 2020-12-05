@@ -62,9 +62,12 @@ function DownLoadFile({
           if (onError) {
             const fileReader = new FileReader();
             fileReader.onload = () => {
-              onError(fileReader.result);
+              onError({
+                ...err,
+                response: { ...err.response, data: fileReader.result },
+              });
             };
-            fileReader.readAsText(err);
+            fileReader.readAsText(err.response.data);
           }
         });
     }
