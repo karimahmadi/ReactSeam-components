@@ -1,7 +1,8 @@
 # Changelog
 ## Latest version : [0.2.7] - 12/02/2020
 ### Changed
-- add isValid property to DownloadFile component
+- add isValid, onError property to DownloadFile component
+
 
 ## [0.2.6] - 12/02/2020
 ### Fixed

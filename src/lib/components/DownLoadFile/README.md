@@ -4,6 +4,7 @@
         responseType="blob"
         fileType="application/pdf"
         isValid={handleIsValidFunction}
+        onError={handleError}
       >
         open new tab
       </DownLoadFile>
@@ -15,6 +16,7 @@
         responseType="blob"
         fileName="myPdfFile.pdf"
         isValid={handleIsValidFunction}
+        onError={handleError}
       >
         download file
       </DownLoadFile>

@@ -60,7 +60,11 @@ function DownLoadFile({
         })
         .catch(err => {
           if (onError) {
-            onError(err);
+            const fileReader = new FileReader();
+            fileReader.onload = () => {
+              onError(fileReader.result);
+            };
+            fileReader.readAsText(err);
           }
         });
     }
