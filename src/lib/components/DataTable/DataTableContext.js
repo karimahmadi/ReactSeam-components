@@ -11,11 +11,12 @@ const DataTableInitialState = {
 };
 const DataTableContext = React.createContext(DataTableInitialState);
 
-const DataTableProvider = ({ children, rows, colsDef }) => {
+const DataTableProvider = ({ children, rows, colsDef, pageSize }) => {
   const [state, dispatch] = useReducer(reducer, {
     ...DataTableInitialState,
     rows,
     colsDef,
+    rowsPerPage: pageSize,
   });
   return (
     <DataTableContext.Provider value={[state, dispatch]}>
@@ -28,6 +29,7 @@ DataTableProvider.propTypes = {
   children: PropTypes.node,
   rows: PropTypes.array,
   colsDef: PropTypes.array,
+  pageSize: PropTypes.number,
 };
 
 export { DataTableContext, DataTableProvider };

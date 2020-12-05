@@ -69,6 +69,15 @@ export function openQuestion(children, onConfirm, onCancel) {
   };
 }
 
+export function openProgress(children) {
+  return {
+    type: OPEN_MODAL,
+    disableBackdropClick: true,
+    disableEscapeKeyDown: true,
+    children,
+  };
+}
+
 export function closeModal(id, result) {
   return {
     type: CLOSE_MODAL,

@@ -17,8 +17,13 @@ const TabPanel = ({
   dontCache,
   loadingIndicator,
 }) => {
-  const [result, setResult] = useState(children);
+  const [result, setResult] = useState(null);
   const [cache, setCache] = useState(null);
+
+  useEffect(() => {
+    setResult(children);
+  }, [children]);
+
   useEffect(() => {
     let LazyComponent;
     if (isLazy && value === index) {

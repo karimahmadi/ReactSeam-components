@@ -8,5 +8,5 @@ export const HeaderText = styled(withTheme(MuiBox))(() => ({
   borderRadius: '0',
   fontSize: '0.9em',
   lineHeight: '0.7em',
-  margin: '-16px auto 0px auto',
+  margin: '-17px auto 0px auto',
 }));

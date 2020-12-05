@@ -11,7 +11,8 @@ const GlobalStyle = createGlobalStyle`
 
 body {
 	font-family: 'Yekan','B Yekan';	
-	margin:0;
+	margin: 0;
+	line-height: 1.5;
 }
 
 @font-face {

@@ -13,7 +13,7 @@ export const TableHead = () => {
 
   const handleSelectAllClick = event => {
     if (event.target.checked) {
-      const newSelecteds = state.rows.map(n => n.name);
+      const newSelecteds = state.rows.map(n => n.dataTableKey);
       dispatch({ type: UPDATE_SELECTED_ROWS, payload: newSelecteds });
       return;
     }

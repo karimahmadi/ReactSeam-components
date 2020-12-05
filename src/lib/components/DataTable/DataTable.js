@@ -28,8 +28,8 @@ function DataTable({ rows, colsDef, totalCount, pageSize }) {
   };
 
   return (
-    <DataTableProvider rows={rows} colsDef={colsDef}>
-      <TableContainer>
+    <DataTableProvider rows={rows} colsDef={colsDef} pageSize={pageSize}>
+      <TableContainer style={{ maxHeight: 240 }}>
         <Table>
           <TableHead />
           <TableBody />

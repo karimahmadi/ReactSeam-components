@@ -55,12 +55,12 @@ export const TableBody = () => {
     return stabilizedThis.map(el => el[0]);
   }
 
-  const handleClick = (event, name) => {
-    const selectedIndex = state.selected.indexOf(name);
+  const handleClick = (event, key) => {
+    const selectedIndex = state.selected.indexOf(key);
     let newSelected = [];
 
     if (selectedIndex === -1) {
-      newSelected = newSelected.concat(state.selected, name);
+      newSelected = newSelected.concat(state.selected, key);
     } else if (selectedIndex === 0) {
       newSelected = newSelected.concat(state.selected.slice(1));
     } else if (selectedIndex === state.selected.length - 1) {
@@ -86,16 +86,16 @@ export const TableBody = () => {
           state.page * state.rowsPerPage + state.rowsPerPage,
         )
         .map(row => {
-          const isItemSelected = isSelected(row.name);
-
+          // row.dataTableKey = row.dataTableKey || uuid();
+          const isItemSelected = isSelected(row.dataTableKey);
           return (
             <DataTableRow
               hover
-              onClick={event => handleClick(event, row.name)}
+              onClick={event => handleClick(event, row.dataTableKey)}
               role="checkbox"
               aria-checked={isItemSelected}
               tabIndex={-1}
-              key={row.name}
+              key={row.dataTableKey}
               selected={isItemSelected}
             >
               {state.colsDef.map(headCell => {

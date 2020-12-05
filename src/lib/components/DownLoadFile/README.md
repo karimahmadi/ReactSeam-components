@@ -3,6 +3,7 @@
         authorization={`Bearer ${localStorage.getItem('Auth-Token')}`}
         responseType="blob"
         fileType="application/pdf"
+        isValid={handleIsValidFunction}
       >
         open new tab
       </DownLoadFile>
@@ -13,6 +14,7 @@
         authorization={`Bearer ${localStorage.getItem('Auth-Token')}`}
         responseType="blob"
         fileName="myPdfFile.pdf"
+        isValid={handleIsValidFunction}
       >
         download file
       </DownLoadFile>
