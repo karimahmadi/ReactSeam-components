@@ -1,0 +1,10 @@
+module.exports = () =>
+  `
+// import { select{{ properCase crudModulePrefix }}DeleteDomain } from '../selectors';
+
+describe('select{{ properCase crudModulePrefix }}DeleteDomain', () => {
+  it('Expect to have unit tests specified', () => {
+    expect(true).toEqual(false);
+  });
+});
+`;

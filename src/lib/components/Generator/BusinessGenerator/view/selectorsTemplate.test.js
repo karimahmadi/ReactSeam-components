@@ -1,0 +1,8 @@
+module.exports = () =>
+  `// import { select{{ properCase crudModulePrefix }}ViewDomain } from '../selectors';
+
+describe('select{{ properCase crudModulePrefix }}ViewDomain', () => {
+  it('Expect to have unit tests specified', () => {
+    expect(true).toEqual(false);
+  });
+});`;
