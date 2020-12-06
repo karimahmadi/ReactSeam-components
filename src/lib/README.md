@@ -1,8 +1,12 @@
 # Changelog
-## Latest version : [0.2.7] - 12/02/2020
+
+## Latest version : [0.2.8] - 12/06/2020
+### Added
+- SimpleDataTable component
+
+## [0.2.7] - 12/05/2020
 ### Changed
 - add isValid, onError property to DownloadFile component
-
 
 ## [0.2.6] - 12/02/2020
 ### Fixed

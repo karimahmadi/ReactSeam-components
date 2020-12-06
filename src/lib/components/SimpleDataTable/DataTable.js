@@ -15,18 +15,18 @@ import { DataTableProvider } from './DataTableContext';
 
 function DataTable({
   dataRows = [],
-  rowDef = [],
+  rowColDef = [],
   dataFooters = [],
-  footerDef = [],
+  footerColDef = [],
   overflowX = 'hidden',
   overflowY = 'hidden',
 }) {
   return (
     <DataTableProvider
       dataRows={dataRows}
-      rowDef={rowDef}
+      rowDef={rowColDef}
       dataFooters={dataFooters}
-      footerDef={footerDef}
+      footerDef={footerColDef}
     >
       <TableContainer style={{ overflowX, overflowY }}>
         <Table>
@@ -41,9 +41,9 @@ function DataTable({
 
 DataTable.propTypes = {
   dataRows: PropTypes.array,
-  rowDef: PropTypes.array,
+  rowColDef: PropTypes.array,
   dataFooters: PropTypes.array,
-  footerDef: PropTypes.array,
+  footerColDef: PropTypes.array,
   overflowX: PropTypes.string,
   overflowY: PropTypes.string,
 };

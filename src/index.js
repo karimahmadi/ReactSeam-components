@@ -126,9 +126,9 @@ const Page1 = () => {
           <Grid item lg={12} md={12} sm={12} xs={12}>
             <SimpleDataTable
               dataRows={dataRows}
-              rowDef={rowDef}
+              rowColDef={rowDef}
               dataFooters={dataFooters}
-              footerDef={footerDef}
+              footerColDef={footerDef}
             />
           </Grid>
         </Grid>
