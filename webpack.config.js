@@ -153,6 +153,7 @@ module.exports = (env, argv) => {
       'NumberInput/index': './src/lib/components/NumberInput/index.js',
       'RDataGrid/index': './src/lib/components/RDataGrid/index.js',
       'Section/index': './src/lib/components/Section/index.js',
+      'SimpleDataTable/index': './src/lib/components/SimpleDataTable/index.js',
       'Tab/index': './src/lib/components/Tab/index.js',
       'TejaratLoading/index': './src/lib/components/TejaratLoading/index.js',
       'ThemeProvider/index': './src/lib/components/ThemeProvider/index.js',
