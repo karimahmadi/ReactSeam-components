@@ -20,11 +20,15 @@ function DownLoadFile({
   url,
   isValid = () => true,
   onError,
+  requestHandler,
+  params,
   ...other
 }) {
   const downLoadFile = () => {
+    const axiosInstance = requestHandler || axios;
+
     if (isValid()) {
-      axios({
+      axiosInstance({
         url,
         method,
         responseType, // 'blob'(Browser Only), 'arraybuffer', 'text', 'document', 'json'(Default), 'stream'
@@ -33,6 +37,7 @@ function DownLoadFile({
             Authorization: authorization, // `Bearer ${localStorage.getItem('Auth-Token')}`,
           },
         },
+        params,
       })
         .then(response => {
           if (response.status === 200) {
@@ -91,6 +96,8 @@ DownLoadFile.propTypes = {
   url: PropTypes.string,
   isValid: PropTypes.func,
   onError: PropTypes.func,
+  requestHandler: PropTypes.func,
+  params: PropTypes.object,
 };
 
 export default DownLoadFile;

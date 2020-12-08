@@ -1,4 +1,9 @@
 # Changelog
+## latest version [0.3.0] - 12/08/2020
+### Added
+- **requestHandler** and **params** properties added to DownloadFile component
+
+
 ## [0.2.9] - 12/08/2020
 ### Added
 - PostfixContainer component
