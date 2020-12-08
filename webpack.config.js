@@ -151,6 +151,8 @@ module.exports = (env, argv) => {
         './src/lib/components/LoadingIndicator/index.js',
       'Modal/index': './src/lib/components/Modal/index.js',
       'NumberInput/index': './src/lib/components/NumberInput/index.js',
+      'PostfixContainer/index':
+        './src/lib/components/PostfixContainer/index.js',
       'RDataGrid/index': './src/lib/components/RDataGrid/index.js',
       'Section/index': './src/lib/components/Section/index.js',
       'SimpleDataTable/index': './src/lib/components/SimpleDataTable/index.js',
