@@ -1,6 +1,12 @@
 # Changelog
+## [0.2.9] - 12/08/2020
+### Added
+- PostfixContainer component
 
-## Latest version : [0.2.8] - 12/06/2020
+### Fixed
+- change value of Date component fixed
+
+## [0.2.8] - 12/06/2020
 ### Added
 - SimpleDataTable component
 

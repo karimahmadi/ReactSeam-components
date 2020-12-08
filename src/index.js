@@ -6,6 +6,13 @@ import { SimpleDataTable } from './lib/components/SimpleDataTable';
 import { Grid } from './lib/components/Grid';
 import { ThemeProvider } from './lib/components/ThemeProvider';
 import { ModalProvider } from './lib/components/Modal';
+import Input from './lib/components/Input/Input';
+import { CodeCombo } from './lib/components/CodeCombo';
+import { CodeTextLookup } from './lib/components/CodeTextLookup';
+import { PostfixContainer } from './lib/components/PostfixContainer';
+import { AmountInput } from './lib/components/AmountInput';
+import { NumberInput } from './lib/components/NumberInput';
+import { Date } from './lib/components/Date';
 
 const Page1 = () => {
   const useData = () => [
@@ -123,6 +130,38 @@ const Page1 = () => {
     <Fragment>
       <Section grid>
         <Grid container spacing={0}>
+          <Grid item lg={6} md={6} sm={6} xs={6}>
+            <PostfixContainer required postfix="ریال">
+              <Input />
+            </PostfixContainer>
+          </Grid>
+          <Grid item lg={6} md={6} sm={6} xs={6}>
+            <CodeCombo items={[]} required />
+          </Grid>
+          <Grid item lg={6} md={6} sm={6} xs={6}>
+            <CodeCombo items={[]} />
+          </Grid>
+          <Grid item lg={6} md={6} sm={6} xs={6}>
+            <CodeCombo items={[]} required />
+          </Grid>
+          <Grid item lg={6} md={6} sm={6} xs={6}>
+            <Input />
+          </Grid>
+          <Grid item lg={6} md={6} sm={6} xs={6}>
+            <CodeTextLookup required hidebutton />
+          </Grid>
+          <Grid item lg={6} md={6} sm={6} xs={6}>
+            <AmountInput required />
+          </Grid>
+          <Grid item lg={6} md={6} sm={6} xs={6}>
+            <NumberInput required />
+          </Grid>
+          <Grid item lg={6} md={6} sm={6} xs={6}>
+            <Date required />
+          </Grid>
+          <Grid item lg={6} md={6} sm={6} xs={6}>
+            <Date postfix="تاریخ جاری" />
+          </Grid>
           <Grid item lg={12} md={12} sm={12} xs={12}>
             <SimpleDataTable
               dataRows={dataRows}
