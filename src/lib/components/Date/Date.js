@@ -4,13 +4,17 @@
  *
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import jMoment from 'moment-jalaali';
 import PropTypes from 'prop-types';
 import { InputDate } from './InputDate';
 
 function Date(props) {
   const [value, setValue] = useState(props.value || '');
+
+  useEffect(() => {
+    setValue(props.value);
+  }, [props.value]);
 
   const toArray = strDate => {
     const val = strDate.replace(/\//g, '');
