@@ -68,6 +68,7 @@ function Dialog({
       TransitionComponent={TransitionComponent}
       transitionDuration={transitionDuration}
       TransitionProps={TransitionProps}
+      BackdropProps={{ style: { backgroundColor: 'rgba(0, 0, 0, 0.2)' } }}
     >
       <DialogTitle>{title}</DialogTitle>
       <DialogContent dividers={dividers}>{children}</DialogContent>
