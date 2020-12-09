@@ -20,3 +20,15 @@
       >
         download file
       </DownLoadFile>
+      
+			<DownLoadFile
+				download
+				url="/rest/lc/report/due/date/pdf/80"
+				authorization={`Bearer ${localStorage.getItem('Auth-Token')}`}
+				responseType="blob"
+				fileType="application/pdf"
+				requestHandler={requestHandlerOptions}
+				params={{ branchId: 125, organManagementCode: 933100 }}
+			>
+				دریافت فایل
+			</DownLoadFile>
