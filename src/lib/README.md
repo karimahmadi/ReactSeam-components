@@ -1,6 +1,35 @@
 # Changelog
+## latest version [0.3.0] - 12/08/2020
+### Added
+- **requestHandler** and **params** properties added to DownloadFile component
 
-## Latest version : [0.2.5] - 11/18/2020
+
+## [0.2.9] - 12/08/2020
+### Added
+- PostfixContainer component
+
+### Fixed
+- change value of Date component fixed
+
+## [0.2.8] - 12/06/2020
+### Added
+- SimpleDataTable component
+
+## [0.2.7] - 12/05/2020
+### Changed
+- add isValid, onError property to DownloadFile component
+
+## [0.2.6] - 12/02/2020
+### Fixed
+- DownloadFile Button Theme
+
+### Added
+- TejaratLoading component to show progress  
+
+### Changed
+- add README for openModal action of Modal component
+
+## [0.2.5] - 11/18/2020
 ### Fixed
 - TabControl render problem  
 - Accordion onChange event problem
