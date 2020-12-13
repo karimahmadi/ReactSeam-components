@@ -1,9 +1,15 @@
+- openInfo(message, onClose)
+- openError(message, onClose)
+- openConfirm(message, onConfirm, onCancel)
+- openQuestion(message, onConfirm, onCancel)
+- openGeneralError(statusCode)
+
 ```
 import React from 'react';
 import {ModalProvider,useModal} from '@tatareact/core';
 
 const TestModal = () => {
-  const {openError} = useModal();
+  const {openError,openInfo,openModal,openConfirm,openGeneralError,openQuestion} = useModal();
   return <button onClick={()=>openError("modal from tatareact code ",onClose)}>click me</button>
 };
 
@@ -22,13 +28,9 @@ export default App;
 
 ```
 
-```ecmascript 6
- const { openModal } = useModal();
-openModal(options)
-```
+- openModal(options)
 
-### options
-
+### options 
 - Component  : react component
 - ComponentProps : object  
 - fullScreen : boolean 
@@ -40,6 +42,12 @@ openModal(options)
 - onClose : event
 - onConfirm : event
 - onCancel : event
+ 
+```
+ const { openModal } = useModal();
+openModal(options)
+```
+
 
 
 

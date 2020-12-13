@@ -6,6 +6,7 @@ import {
   openInfo,
   openModal,
   openQuestion,
+  openGeneralError,
 } from './actions';
 
 export const useModal = () => {
@@ -13,6 +14,7 @@ export const useModal = () => {
   return {
     openInfo: (children, onClose) => dispatch(openInfo(children, onClose)),
     openError: (children, onClose) => dispatch(openError(children, onClose)),
+    openGeneralError: statusCode => dispatch(openGeneralError(statusCode)),
     openConfirm: (children, onConfirm, onCancel) =>
       dispatch(openConfirm(children, onConfirm, onCancel)),
     openQuestion: (children, onConfirm, onCancel) =>

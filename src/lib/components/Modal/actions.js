@@ -69,6 +69,18 @@ export function openQuestion(children, onConfirm, onCancel) {
   };
 }
 
+export function openGeneralError(statusCode) {
+  return {
+    type: OPEN_MODAL,
+    title: 'خطای سیستمی',
+    confirm: 'بستن',
+    disableBackdropClick: true,
+    disableEscapeKeyDown: true,
+    dividers: true,
+    children: `خطای سیستمی رخ داده است لطفا با راهبر سامانه تماس حاصل فرمایید . کد خطا : ${statusCode}`,
+  };
+}
+
 export function openProgress(children) {
   return {
     type: OPEN_MODAL,

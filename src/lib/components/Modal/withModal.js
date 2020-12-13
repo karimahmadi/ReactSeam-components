@@ -3,6 +3,7 @@ import { ModalContext } from './ModalContext';
 import {
   openConfirm,
   openError,
+  openGeneralError,
   openInfo,
   openModal,
   openQuestion,
@@ -14,6 +15,7 @@ export const withModal = Component => props => {
     <Component
       {...props}
       openError={(children, onClose) => dispatch(openError(children, onClose))}
+      openGeneralError={statusCode => dispatch(openGeneralError(statusCode))}
       openInfo={(children, onClose) => dispatch(openInfo(children, onClose))}
       openConfirm={(children, onConfirm, onCancel) =>
         dispatch(openConfirm(children, onConfirm, onCancel))
