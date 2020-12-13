@@ -1,7 +1,8 @@
 # Changelog
-## latest version [0.3.0] - 12/09/2020
+## latest version [0.3.0] - 12/13/2020
 ### Added
 - **requestHandler** and **params** properties added to DownloadFile component
+- openGeneralError action to Modal component ( const { openGeneralError } = useModal(); )
 
 ### Changed
 - background color of Dialog Backdrop (alpha parameter 0.5 => 0.2)
