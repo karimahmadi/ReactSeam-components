@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import { render } from 'react-dom';
-import ButtonGroup from '@material-ui/core/ButtonGroup/ButtonGroup';
 import { ModalProvider } from './lib/components/Modal';
 import { Section } from './lib/components/Section';
 import { ThemeProvider } from './lib/components/ThemeProvider';
@@ -8,9 +7,8 @@ import { InputLabel as Label } from './lib/components/InputLabel';
 import { Input } from './lib/components/Input';
 import { Date } from './lib/components/Date';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { Checkbox } from './lib/components/Checkbox';
+import { Checkbox } from './lib/components/Checkbox/index';
 import { CodeCombo } from './lib/components/CodeCombo';
-import { DataTable } from './lib/components/DataTable';
 import { Grid } from './lib/components/Grid';
 
 
