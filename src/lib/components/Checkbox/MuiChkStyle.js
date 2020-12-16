@@ -1,7 +1,6 @@
-import {createGlobalStyle} from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
-
-const MuiCheskStyle = createGlobalStyle`
+const MuiChkStyle = createGlobalStyle`
 		span.MuiButtonBase-root {
     padding: 0;
 }
@@ -13,5 +12,4 @@ svg.MuiSvgIcon-root {
     height: 15px;
 }
 	`;
-export default MuiCheskStyle;
-
+export default MuiChkStyle;

@@ -1,5 +1,9 @@
 # Changelog
-## latest version [0.3.0] - 12/13/2020
+## latest version [0.3.1] - 12/16/2020
+### Fixed
+- theme of Checkbox and FormControlLabel changed ( samples exist in tatareact-components-sample)
+
+## [0.3.0] - 12/13/2020
 ### Added
 - **requestHandler** and **params** properties added to DownloadFile component
 - openGeneralError action to Modal component ( const { openGeneralError } = useModal(); )

@@ -160,7 +160,6 @@ module.exports = (env, argv) => {
       'TejaratLoading/index': './src/lib/components/TejaratLoading/index.js',
       'ThemeProvider/index': './src/lib/components/ThemeProvider/index.js',
       'Tree/index': './src/lib/components/Tree/index.js',
-      'Charts/index': './src/lib/components/Charts/index.js',
     };
     config.externals = [
       'react',

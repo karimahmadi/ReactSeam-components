@@ -1,4 +1,11 @@
 const theme = {
+  overrides: {
+    MuiFormControlLabel: {
+      label: {
+        fontSize: '0.8rem',
+      },
+    },
+  },
   palette: {
     grey: {
       50: '#fff',
