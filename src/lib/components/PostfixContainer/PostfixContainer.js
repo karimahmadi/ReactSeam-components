@@ -5,7 +5,7 @@ const PostfixContainer = ({ children, required, postfix }) => (
   <div style={{ display: 'flex', width: '100%' }}>
     {children}
     {required && <span style={{ color: 'red' }}>&lowast;</span>}
-    {postfix && <span>{postfix}</span>}
+    {postfix && <span style={{whiteSpace: 'nowrap', fontSize: '12.8px', fontFamily:'Yekan'}}>{postfix}</span>}
   </div>
 );
 
