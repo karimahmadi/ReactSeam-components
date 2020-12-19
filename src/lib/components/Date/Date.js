@@ -32,6 +32,10 @@ function Date(props) {
     let pTodays;
     let val = strDate;
 
+    if (!strDate) {
+      return { valid: false };
+    }
+
     if (props.currentDate) {
       if (Array.isArray(props.currentDate)) {
         pTodays = props.currentDate;
@@ -114,7 +118,9 @@ function Date(props) {
   };
 
   const handleFocus = () => {
-    setValue(value.replace(/\//g, ''));
+    if (value) {
+      setValue(value.replace(/\//g, ''));
+    }
   };
 
   const handleBlur = () => {
