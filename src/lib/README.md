@@ -1,5 +1,10 @@
 # Changelog
-## latest version [0.3.1] - 12/16/2020
+## Latest version [0.3.2] - 12/19/2020
+### Fixed
+- Date component bug fixed
+- PostfixContainer bug fixed
+
+## [0.3.1] - 12/16/2020
 ### Fixed
 - theme of Checkbox and FormControlLabel changed ( samples exist in tatareact-components-sample)
 
