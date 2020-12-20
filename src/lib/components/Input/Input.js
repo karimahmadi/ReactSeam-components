@@ -1,6 +1,6 @@
 import { styled, withTheme } from '@material-ui/core/styles';
 import { InputBase } from './InputBase';
-import withChangeFocus from '../FocusManager/withChangeFocus';
+import { withChangeFocus } from '../FocusManager';
 
 const Input = styled(withTheme(withChangeFocus(InputBase)))(props => ({
   width: '100%',

@@ -1,6 +1,6 @@
 import { styled, withTheme } from '@material-ui/core/styles';
 import ButtonBase from './Button';
-import withChangeFocus from '../FocusManager/withChangeFocus';
+import { withChangeFocus } from '../FocusManager';
 
 export const Button = styled(withTheme(withChangeFocus(ButtonBase)))(props => ({
   background: props.theme.palette.grey[200],

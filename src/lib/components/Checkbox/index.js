@@ -1,6 +1,6 @@
 import { styled, withTheme } from '@material-ui/core';
 import CheckboxBase from './Checkbox';
-import withChangeFocus from '../FocusManager/withChangeFocus';
+import { withChangeFocus } from '../FocusManager';
 
 export const Checkbox = styled(withTheme(withChangeFocus(CheckboxBase)))(
   props => ({
