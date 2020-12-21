@@ -128,6 +128,8 @@ module.exports = (env, argv) => {
     config.mode = 'production';
     config.output.filename = '[name].js';
     config.entry = {
+      'Inputs/index': './src/lib/components/Inputs/index.js',
+
       'Accordion/index': './src/lib/components/Accordion/index.js',
       'AmountInput/index': './src/lib/components/AmountInput/index.js',
       'Button/index': './src/lib/components/Button/index.js',
