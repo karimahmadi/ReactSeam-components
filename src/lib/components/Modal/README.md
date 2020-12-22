@@ -1,9 +1,22 @@
-- openInfo(message, onClose)
-- openError(message, onClose)
-- openConfirm(message, onConfirm, onCancel)
-- openQuestion(message, onConfirm, onCancel)
-- openGeneralError(statusCode)
+#  Modal component
+## import 
+```
+import {useModal, EVENT_ERROR, EVENT_GENERAL_ERROR} from '@tatareact/core/Modal';
+```
 
+- openInfo(message, onClose, options)
+- openError(message, onClose, options)
+- openConfirm(message, onConfirm, onCancel, options)
+- openQuestion(message, onConfirm, onCancel, options)
+- openGeneralError(statusCode, options)
+
+### options 
+- {
+		eventType : string, (ex. EVENT_ERROR || 'my_custom_event')
+  	data: object
+  }
+
+### sample 
 ```
 import React from 'react';
 import {ModalProvider,useModal} from '@tatareact/core';

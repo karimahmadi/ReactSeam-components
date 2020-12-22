@@ -12,19 +12,40 @@ import { CLOSE_MODAL } from './constants';
 function ModalWrapper() {
   const [state, dispatch] = useContext(ModalContext);
 
-  const handleClose = (id, result, callback) => event => {
+  const handleClose = (id, result, callback, options) => event => {
     dispatch({ type: CLOSE_MODAL, id, result });
     if (callback) callback(event);
+    if (options && options.eventType) {
+      document.dispatchEvent(
+        new CustomEvent(options.eventType, {
+          detail: { ...options.data, action: 'close' },
+        }),
+      );
+    }
   };
 
-  const handleConfirm = (id, callback) => event => {
+  const handleConfirm = (id, callback, options) => event => {
     dispatch({ type: CLOSE_MODAL, id });
     if (callback) callback(event);
+    if (options && options.eventType) {
+      document.dispatchEvent(
+        new CustomEvent(options.eventType, {
+          detail: { ...options.data, action: 'confirm' },
+        }),
+      );
+    }
   };
 
-  const handleCancel = (id, callback) => event => {
+  const handleCancel = (id, callback, options) => event => {
     dispatch({ type: CLOSE_MODAL, id });
     if (callback) callback(event);
+    if (options && options.eventType) {
+      document.dispatchEvent(
+        new CustomEvent(options.eventType, {
+          detail: { ...options.data, action: 'cancel' },
+        }),
+      );
+    }
   };
 
   return state.map(dialog => {
@@ -36,15 +57,16 @@ function ModalWrapper() {
       onClose,
       onConfirm,
       onCancel,
+      options,
       ...other
     } = dialog;
 
     return (
       <Dialog
         key={id}
-        onClose={handleClose(id, 'close', onClose)}
-        onConfirm={handleConfirm(id, onConfirm)}
-        onCancel={handleCancel(id, onCancel)}
+        onClose={handleClose(id, 'close', onClose, options)}
+        onConfirm={handleConfirm(id, onConfirm, options)}
+        onCancel={handleCancel(id, onCancel, options)}
         {...other}
       >
         {Component && (

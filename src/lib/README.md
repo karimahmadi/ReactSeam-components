@@ -1,5 +1,52 @@
 # Changelog
-## Latest version [0.3.2] - 12/19/2020
+## Latest version [0.3.4] - 12/22/2020
+## Added
+- added options to modal actions as last parameter
+
+## [0.3.3] - 12/21/2020
+### Fixed
+- some console.log removed
+
+### Changed
+- all components that need focus manager grouped in one file so the import of these components changed:
+
+before change 
+``` 
+import { Input } from '@tatareact/core/Input';
+import { AmountInput } from '@tatareact/core/AmountInput';
+import { NumberInput } from '@tatareact/core/NumberInput';
+import { Date } from '@tatareact/core/Date';
+import { CodeCombo } from '@tatareact/core/CodeCombo';
+import { CodeTextLookup } from '@tatareact/core/CodeTextLookup';
+import { Button } from '@tatareact/core/Button';
+import { DownLoadFile } from '@tatareact/core/DownLoadFile';
+import { FileUpload } from '@tatareact/core/FileUpload';
+import { Checkbox } from '@tatareact/core/Checkbox';
+import { CheckboxGroup } from '@tatareact/core/CheckboxGroup';
+```
+
+after change 
+```
+import { 
+	Input, 
+	AmountInput, 
+	NumberInput, 
+	Date, 
+	CodeCombo, 
+	CodeTextLookup, 
+	Button,  
+	DownLoadFile,
+	FileUpload,
+	Checkbox,
+	CheckboxGroup,
+	FocusManager
+} from '@tatareact/core/Inputs';
+```
+
+
+ 
+
+## [0.3.2] - 12/19/2020
 ### Fixed
 - Date component bug fixed
 - PostfixContainer bug fixed

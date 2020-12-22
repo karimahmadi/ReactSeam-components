@@ -12,13 +12,16 @@ import {
 export const useModal = () => {
   const [, dispatch] = useContext(ModalContext);
   return {
-    openInfo: (children, onClose) => dispatch(openInfo(children, onClose)),
-    openError: (children, onClose) => dispatch(openError(children, onClose)),
-    openGeneralError: statusCode => dispatch(openGeneralError(statusCode)),
-    openConfirm: (children, onConfirm, onCancel) =>
-      dispatch(openConfirm(children, onConfirm, onCancel)),
-    openQuestion: (children, onConfirm, onCancel) =>
-      dispatch(openQuestion(children, onConfirm, onCancel)),
+    openInfo: (children, onClose, eventType) =>
+      dispatch(openInfo(children, onClose, eventType)),
+    openError: (children, onClose, eventType) =>
+      dispatch(openError(children, onClose, eventType)),
+    openGeneralError: (statusCode, eventType) =>
+      dispatch(openGeneralError(statusCode, eventType)),
+    openConfirm: (children, onConfirm, onCancel, eventType) =>
+      dispatch(openConfirm(children, onConfirm, onCancel, eventType)),
+    openQuestion: (children, onConfirm, onCancel, eventType) =>
+      dispatch(openQuestion(children, onConfirm, onCancel, eventType)),
     openModal: props => dispatch(openModal(props)),
   };
 };

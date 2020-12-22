@@ -1,9 +1,7 @@
 import React, { useContext } from 'react';
 import { FocusManagerContext } from './FocusManagerContext';
 const withChangeFocus = Component => props => {
-  console.log('FocusManagerContext:', FocusManagerContext);
   const context = useContext(FocusManagerContext);
-  console.log('context:', context);
   const [dispatch, ALL_CONSTANT] = context || [];
   return (
     <Component

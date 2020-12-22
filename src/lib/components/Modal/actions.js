@@ -13,7 +13,7 @@ export function openModal(props) {
   };
 }
 
-export function openInfo(children, onClose) {
+export function openInfo(children, onClose, options) {
   return {
     type: OPEN_MODAL,
     title: 'اطلاع',
@@ -23,10 +23,11 @@ export function openInfo(children, onClose) {
     dividers: true,
     onClose,
     children,
+    options,
   };
 }
 
-export function openError(children, onClose) {
+export function openError(children, onClose, options) {
   return {
     type: OPEN_MODAL,
     title: 'خطا',
@@ -36,10 +37,11 @@ export function openError(children, onClose) {
     dividers: true,
     onClose,
     children,
+    options,
   };
 }
 
-export function openConfirm(children, onConfirm, onCancel) {
+export function openConfirm(children, onConfirm, onCancel, options) {
   return {
     type: OPEN_MODAL,
     disableBackdropClick: true,
@@ -51,10 +53,11 @@ export function openConfirm(children, onConfirm, onCancel) {
     onConfirm,
     onCancel,
     children,
+    options,
   };
 }
 
-export function openQuestion(children, onConfirm, onCancel) {
+export function openQuestion(children, onConfirm, onCancel, options) {
   return {
     type: OPEN_MODAL,
     disableBackdropClick: true,
@@ -66,10 +69,11 @@ export function openQuestion(children, onConfirm, onCancel) {
     onConfirm,
     onCancel,
     children,
+    options,
   };
 }
 
-export function openGeneralError(statusCode) {
+export function openGeneralError(statusCode, options) {
   return {
     type: OPEN_MODAL,
     title: 'خطای سیستمی',
@@ -78,6 +82,7 @@ export function openGeneralError(statusCode) {
     disableEscapeKeyDown: true,
     dividers: true,
     children: `خطای سیستمی رخ داده است لطفا با راهبر سامانه تماس حاصل فرمایید . کد خطا : ${statusCode}`,
+    options,
   };
 }
 

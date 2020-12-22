@@ -1,8 +1,7 @@
 import { OutlinedInput as MuiOutlinedInput } from '@material-ui/core';
 import InputAdornment from '@material-ui/core/InputAdornment/InputAdornment';
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropsType from 'prop-types';
-import { FocusManagerContext } from '../FocusManager';
 
 const InputBase = ({
   dispatch,
@@ -14,9 +13,6 @@ const InputBase = ({
   const inputRef = useRef(null);
 
   const { disabled, readOnly } = others;
-
-  const context = useContext(FocusManagerContext);
-  console.log('context in InputBase:', context);
 
   useEffect(() => {
     if (dispatch)
