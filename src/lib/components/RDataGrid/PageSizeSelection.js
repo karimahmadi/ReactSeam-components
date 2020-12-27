@@ -9,12 +9,8 @@ const PageSizeSelection = ({
   const handleChange = e => {
     if (typeof onChange === 'function') onChange(e.target.value, 1);
   };
-  let result = sizeList.map((size, index) => (
-    <option
-      key={size}
-      value={size}
-      selected={(!selectedSize && index === 0) || selectedSize}
-    >
+  let result = sizeList.map(size => (
+    <option key={size} value={size}>
       {size}
     </option>
   ));
@@ -23,7 +19,12 @@ const PageSizeSelection = ({
   }
   return (
     <Fragment>
-      <select onChange={handleChange}>{result}</select>
+      <select
+        onChange={handleChange}
+        defaultValue={(!selectedSize && sizeList[0]) || selectedSize}
+      >
+        {result}
+      </select>
     </Fragment>
   );
 };

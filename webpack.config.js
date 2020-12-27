@@ -13,6 +13,7 @@ const config = {
   entry: './src/index.js',
   // module (I know it's a bit weird to have module.exports.module) is where we
   // define all the rules for how webpack will deal with thing.
+  devtool: 'eval-source-map',
   module: {
     // rules takes an array, each item containing the respective rules
     rules: [
@@ -79,6 +80,7 @@ const config = {
     // but until then, more reading can be found here:
     // https://webpack.js.org/configuration/output/#output-librarytarget
     libraryTarget: 'umd',
+    sourceMapFilename: '[name].js.map',
   },
   plugins: [
     new CopyPlugin({

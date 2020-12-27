@@ -2,15 +2,16 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import numeral from 'numeral';
 import arrayUtil from 'lodash';
+
 import PropTypes from 'prop-types';
-import { Table, Column, HeaderCell, Cell, ColumnGroup } from 'rsuite-table';
-import 'rsuite-table/dist/css/rsuite-table.css';
-import DataTableGlobalStyles from './RDataTableStyles';
+import { Table, Column, HeaderCell, Cell, ColumnGroup } from '@rsuitelocal/table';
+import '@rsuitelocal/table/dist/css/rsuite-table.css'; // or 'rsuite-table/dist/css/rsuite-table.css'
+import DataTableGlobalStyles from './DataTableStyles';
 import Footer from './Footer';
 import MultipleSelectionColumn from './MultipleSelectionColumn';
 import CheckCell from './CheckCell';
 
-const RDataGrid = ({
+const DataGrid = ({
   dataKey = 'id',
   loading,
   // allColumnSortable,
@@ -121,7 +122,7 @@ const RDataGrid = ({
     if (selection) {
       if (selectionMode === 'multiple') {
         result.push(
-          <Column width={40}>
+          <Column width={55}>
             <HeaderCell>
               <MultipleSelectionColumn
                 data={data}
@@ -147,10 +148,9 @@ const RDataGrid = ({
       );
     }
     inputColumnChildren.forEach(inputColumnChild => {
-      if (inputColumnChild.type.name === 'RDataGridColumnGroup') {
+      if (inputColumnChild.type.name === 'DataGridColumnGroup') {
         result.push(columnGroup(inputColumnChild));
-      }
-      result.push(displayColumnHeaderAndCell(inputColumnChild));
+      } else result.push(displayColumnHeaderAndCell(inputColumnChild));
     });
     return result;
   };
@@ -225,23 +225,33 @@ const RDataGrid = ({
   const column = inputColumnChildren => {
     let insideColumnHeader;
     let insideColumnCell;
-    if(inputColumnChildren.props.type)
-    {
-      insideColumnCell = renderColumnWithFormatter(inputColumnChildren.props.headerName, inputColumnChildren.props.colSpan,
-        inputColumnChildren.props.type , findFormatter);
-    }
-    if(typeof inputColumnChildren.props.renderHeaderCellChildren === 'function')
-      insideColumnHeader = renderHeaderCellChildren( inputColumnChildren.props.headerName, inputColumnChildren.props.renderHeaderCellChildren,);
-    else
-      insideColumnHeader = header(inputColumnChildren.props.headerName);
-
-    if(typeof inputColumnChildren.props.renderCellChildren === 'function')
-      insideColumnCell = renderCellChildren(
-        inputColumnChildren.props.headerName,
+    if (inputColumnChildren.props.type) {
+      insideColumnCell = renderColumnWithFormatter(
+        inputColumnChildren.props.field,
         inputColumnChildren.props.colSpan,
-        inputColumnChildren.props.renderCellChildren,)
+        inputColumnChildren.props.type,
+        findFormatter,
+      );
+    }
+    if (
+      typeof inputColumnChildren.props.renderHeaderCellChildren === 'function'
+    )
+      insideColumnHeader = renderHeaderCellChildren(
+        inputColumnChildren.props.headerName,
+        inputColumnChildren.props.renderHeaderCellChildren,
+      );
+    else insideColumnHeader = header(inputColumnChildren.props.headerName);
+    if (typeof inputColumnChildren.props.renderCellChildren === 'function')
+      insideColumnCell = renderCellChildren(
+        inputColumnChildren.props.field,
+        inputColumnChildren.props.colSpan,
+        inputColumnChildren.props.renderCellChildren,
+      );
     else if (!inputColumnChildren.props.type)
-      insideColumnCell = cell(inputColumnChildren.props.headerName, inputColumnChildren.props.colSpan,);
+      insideColumnCell = cell(
+        inputColumnChildren.props.field,
+        inputColumnChildren.props.colSpan,
+      );
     return (
       <Column
         resizable={inputColumnChildren.props.resizable}
@@ -249,28 +259,31 @@ const RDataGrid = ({
         fixed={inputColumnChildren.props.fixed}
         align={inputColumnChildren.props.align}
         width={inputColumnChildren.props.width}
-        flexGrow={inputColumnChildren.props.flexGrow}
       >
-        {insideColumnHeader}{insideColumnCell}
+        {insideColumnHeader}
+        {insideColumnCell}
       </Column>
-    )
+    );
   };
   const header = headerName => <HeaderCell>{headerName}</HeaderCell>;
-  const cell = (headerName, colSpan) => (
-    <Cell dataKey={headerName} colSpan={colSpan} />
-  );
+  const cell = (field, colSpan) => <Cell dataKey={field} colSpan={colSpan} />;
   const renderHeaderCellChildren = (
     headerName,
     renderHeaderCellChildrenFunc,
   ) => <HeaderCell>{renderHeaderCellChildrenFunc(headerName)}</HeaderCell>;
-  const renderCellChildren = (headerName, colSpan, renderCellChildrenFunc) => (
-    <Cell dataKey={headerName} colSpan={colSpan}>
+  const renderCellChildren = (field, colSpan, renderCellChildrenFunc) => (
+    <Cell dataKey={field} colSpan={colSpan}>
       {(rowData, rowIndex) => renderCellChildrenFunc(rowData, rowIndex)}
     </Cell>
   );
-  const renderColumnWithFormatter = (headerName, colSpan, formatter, formatterFunc) => (
-    <Cell dataKey={headerName} colSpan={colSpan}>
-      {rowData => formatterFunc(formatter, rowData[headerName])}
+  const renderColumnWithFormatter = (
+    field,
+    colSpan,
+    formatter,
+    formatterFunc,
+  ) => (
+    <Cell dataKey={field} colSpan={colSpan}>
+      {rowData => formatterFunc(formatter, rowData[field])}
     </Cell>
   );
   return (
@@ -281,7 +294,7 @@ const RDataGrid = ({
         // rownumbers={rownumbers}
         data={data}
         // rowSelection={rowSelection}
-        // defaultColDef = {defaultColDef}
+        // defaultColDef={defaultColDef}
         rtl={rtl}
         loading={loading}
         onSortColumn={handleSortColumn}
@@ -329,7 +342,7 @@ function currencyFormatter(value) {
   return numeral(value).format('0,0.00');
 }
 
-RDataGrid.propTypes = {
+DataGrid.propTypes = {
   dataKey: PropTypes.string,
   // rownumbers: PropTypes.bool,
   loading: PropTypes.bool,
@@ -356,9 +369,9 @@ RDataGrid.propTypes = {
   // onSelectionChange: PropTypes.func,
   onRowClick: PropTypes.func,
   onRowSingleSelection: PropTypes.func,
-  selection: PropTypes.object,
+  selection: PropTypes.bool,
   rtl: PropTypes.bool,
-  onChangePageSize: PropTypes.number,
+  onChangePageSize: PropTypes.func,
   pageRangeDisplayed: PropTypes.number,
   selectionColor: PropTypes.string,
   showRowNumberColumn: PropTypes.bool,
@@ -369,4 +382,4 @@ RDataGrid.propTypes = {
   // selectedAllRows: PropTypes.bool,
 };
 
-export default RDataGrid;
+export default DataGrid;

@@ -5,8 +5,10 @@
  */
 
 import React from 'react';
-import RDataGrid from './RDataGrid';
-export default props => <RDataGrid {...props} />;
-export { RDataGridColumn } from './RDataGridColumn';
-export { RDataGridHeaderRow } from './RDataGridHeaderRow';
-export { RDataGridColumnGroup } from './RDataGridColumnGroup';
+import DataGrid from './DataGrid';
+export default props => <DataGrid {...props} />;
+export { DataGridColumn as RDataGridColumn } from './DataGridColumn';
+export { DataGridHeaderRow as RDataGridHeaderRow } from './DataGridHeaderRow';
+export {
+  DataGridColumnGroup as RDataGridColumnGroup,
+} from './DataGridColumnGroup';
