@@ -96,7 +96,6 @@
     "react-js-pagination": "^3.0.3",
     "react-number-format": "^4.4.1",
     "react-router-dom": "^5.0.0",
-    "rsuite-local-table": "^4.0.0",
     "rsuite-table": "^3.13.1",
     "styled-components": "^5.2.0",
     "uuid": "^8.3.1"

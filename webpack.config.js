@@ -128,6 +128,7 @@ const config = {
 module.exports = (env, argv) => {
   if (argv.mode === 'production') {
     config.mode = 'production';
+    config.devtool = 'none';
     config.output.filename = '[name].js';
     config.entry = {
       'Inputs/index': './src/lib/components/Inputs/index.js',
@@ -179,9 +180,10 @@ module.exports = (env, argv) => {
       'styled-components',
       'numeral',
       'rc-easyui',
-      'rsuite-table',
+      '@rsuitelocal/table',
       'react-js-pagination',
       'lodash',
+      'highcharts',
     ];
     return config;
   }
