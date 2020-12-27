@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cell } from 'rsuite-table';
+import { Cell } from '@rsuitelocal/table';
 import PropTypes from 'prop-types';
 import { Checkbox } from '../Checkbox';
 const CheckCell = ({ rowData, onChange, checkedKeys, dataKey, ...props }) => {
@@ -10,7 +10,7 @@ const CheckCell = ({ rowData, onChange, checkedKeys, dataKey, ...props }) => {
     <Cell {...props} style={{ padding: 0 }}>
       <div style={{ 'justify-content': 'center', display: 'flex' }}>
         <Checkbox
-          id={rowData[dataKey]}
+          id={rowData[dataKey].toString()}
           onChange={onChange}
           checked={checkedKeys.some(
             item => item === rowData[dataKey].toString(),

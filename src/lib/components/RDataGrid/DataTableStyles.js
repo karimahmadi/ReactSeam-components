@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-const RDataTableGlobalStyles = createGlobalStyle`
+const DataTableGlobalStyles = createGlobalStyle`
   .rs-table-row{
     background: #fff;
   };
@@ -10,4 +10,4 @@ const RDataTableGlobalStyles = createGlobalStyle`
     background-color:${props => props.selectionColor};
   }
 `;
-export default RDataTableGlobalStyles;
+export default DataTableGlobalStyles;

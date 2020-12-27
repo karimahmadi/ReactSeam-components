@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-const RDataGridColumn = ({
+const DataGridColumn = ({
   headerName,
   field,
   filter,
@@ -31,7 +31,7 @@ const RDataGridColumn = ({
     width={width}
   />
 );
-RDataGridColumn.propTypes = {
+DataGridColumn.propTypes = {
   headerName: PropTypes.string.isRequired,
   field: PropTypes.string,
   type: PropTypes.string,
@@ -46,4 +46,4 @@ RDataGridColumn.propTypes = {
   resizable: PropTypes.bool,
   width: PropTypes.number,
 };
-export { RDataGridColumn };
+export { DataGridColumn };
